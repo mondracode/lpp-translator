@@ -1,0 +1,21 @@
+// Es posible declarar más de una variable en la misma línea
+entero my_integer, variableIwillNOTUse
+real the_real_ONE
+Booleano boolean
+Caracter char
+cadena[10] string
+
+Inicio
+
+// Las asignaciones no se realizan con =
+
+my_integer <- 2 //para declarar números positivos no se antepone el signo +
+the_REAL_ONE <- -4.5682 // para los negativos si se escribe el signo
+BOOLEAN <- Verdadero
+char <-'a'
+striNg <- "Hola mundo"
+
+// imprimimos los valores en consola y separados por un espacio
+escriba my_integer," ",the_real_one," ",Boolean," ",char," ",string
+
+FIN

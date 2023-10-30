@@ -6,13 +6,13 @@ dec_registros: REGISTRO ID dec_variables FIN REGISTRO;
 
 dec_variables: dec_variable*;
 
-dec_variable: tipo ID (',' ID)*;
+dec_variable: tipo ID (TKN_COMMA ID)*;
 
 dec_funciones: (dec_funcion | dec_procedimiento)*;
 
-dec_funcion: FUNCION ID parametros ':' tipo dec_variables prog;
+dec_funcion: FUNCION ID parametros TKN_COLON tipo dec_variables prog;
 
-parametros: ('(' dec_var (',' dec_var)* ')')?;
+parametros: (TKN_OPENING_PAR dec_var (TKN_COMMA dec_var)* TKN_CLOSING_PAR)?;
 
 dec_var: (VAR)? tipo ID;
 
@@ -26,7 +26,7 @@ escriba: ESCRIBA exp_list;
 
 lea: LEA exp_list;
 
-llamar: LLAMAR ID ( '(' exp_list ')' )?;
+llamar: LLAMAR ID ( TKN_OPENING_PAR exp_list TKN_CLOSING_PAR )?;
 
 si: SI exp ENTONCES cmds sino FIN SI;
 
@@ -34,28 +34,86 @@ sino: (SINO si | SINO cmds)?;
 
 caso: CASO ID (opcion)+ (caso_sino)? FIN CASO;
 
-opcion: exp_list ':' cmds;
+opcion: exp_list TKN_COLON cmds;
 
-caso_sino: SINO ':' cmds;
+caso_sino: SINO TKN_COLON cmds;
 
 repita: REPITA cmds HASTA exp;
 
-para: para EXP '<-' EXP HASTA EXP HAGA cmds FIN PARA;
+para: PARA exp TKN_ASSIGN exp HASTA exp HAGA cmds FIN PARA;
 
 mientras: MIENTRAS exp HAGA cmds FIN MIENTRAS;
 
-asigne: EXP '<-' EXP;
+asigne: exp TKN_ASSIGN exp;
 
-exp: literal | ID | exp '[' exp_list ']' | exp '.' ID | ID ('(' exp_list ')')? | '(' exp ')' | exp OPERATOR exp;
+retorne: RETORNE exp;
 
-literal: char | cadena | real | entero | booleano;
+exp: literal | ID | exp TKN_OPENING_BRA exp_list TKN_CLOSING_BRA | exp TKN_PERIOD ID | ID (TKN_OPENING_PAR exp_list TKN_CLOSING_PAR)? | TKN_OPENING_PAR exp TKN_CLOSING_PAR | exp OPERATOR exp;
+
+literal: CHAR_LITERAL | CADENA_LITERAL | REAL_LITERAL | ENTERO_LITERAL | BOOLEANO_LITERAL;
 
 tipo: ENTERO | REAL | BOOLEANO | CARACTER | CADENA | arreglo;
 
-arreglo: ARREGLO '[' entero ']' DE tipo;
+arreglo: ARREGLO TKN_OPENING_BRA ENTERO_LITERAL TKN_CLOSING_BRA DE tipo;
 
-exp_list: exp (',' exp)*;
+exp_list: exp (TKN_COMMA exp)*;
 
+// Tokens
+TKN_COMMA: ',';
+TKN_COLON: ':';
+TKN_OPENING_PAR: '(';
+TKN_CLOSING_PAR: ')';
+TKN_ASSIGN: '<-';
+TKN_OPENING_BRA: '[';
+TKN_CLOSING_BRA: ']';
+TKN_PERIOD: '.';
+TKN_SINGLE_QUOTE: '\'';
+TKN_DOUBLE_QUOTE: '"';
+
+// Reserved words that we gotta declare like this for them to be case-insensitive
+REGISTRO: R E G I S T R O;
+FIN: F I N;
+FUNCION: F U N C I O N;
+VAR: V A R;
+PROCEDIMIENTO: P R O C E D I M I E N T O;
+INICIO: I N I C I O;
+ESCRIBA: E S C R I B A;
+LEA: L E A;
+LLAMAR: L L A M A R;
+SI: S I;
+ENTONCES: E N T O N C E S;
+SINO: S I N O;
+CASO: C A S O;
+REPITA: R E P I T A;
+HASTA: H A S T A;
+PARA: P A R A;
+MIENTRAS: M I E N T R A S;
+RETORNE: R E T O R N E;
+ENTERO: E N T E R O;
+REAL: R E A L;
+BOOLEANO: B O O L E A N O;
+CARACTER: C A R A C T E R;
+CADENA: C A D E N A;
+ARREGLO: A R R E G L O;
+
+// literals
+LETRAS: [A-Za-zÀ-ÖØ-öø-ÿ];
+
+CHAR_LITERAL: TKN_SINGLE_QUOTE LETRAS? TKN_SINGLE_QUOTE;
+
+CADENA_LITERAL: TKN_DOUBLE_QUOTE LETRAS* TKN_DOUBLE_QUOTE;
+
+DIGITOS: [0-9];
+
+REAL_LITERAL: DIGITOS+ ('.' DIGITOS+)?;
+
+ENTERO_LITERAL: DIGITOS+;
+
+BOOLEANO_LITERAL: ( VERDADERO | FALSO );
+
+VERDADERO: V E R D A D E R O;
+
+FALSO: F A L S O;
 
 // for case insesnsitivity
 fragment A : [aA]; // match either an 'a' or 'A'
@@ -84,3 +142,5 @@ fragment W : [wW];
 fragment X : [xX];
 fragment Y : [yY];
 fragment Z : [zZ];
+
+ID: [a-zA-Z_]+[a-zA-Z_0-9]*;

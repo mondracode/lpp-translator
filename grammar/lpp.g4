@@ -95,6 +95,26 @@ BOOLEANO: B O O L E A N O;
 CARACTER: C A R A C T E R;
 CADENA: C A D E N A;
 ARREGLO: A R R E G L O;
+HAGA: H A G A;
+DE: D E;
+
+// operators
+OPERATOR: TKN_PLUS | TKN_MINUS | TKN_TIMES | TKN_DIV | TKN_POWER | TKN_EQUAL | TKN_NEQ | TKN_LESS | TKN_LEQ | TKN_GREATER | TKN_GEQ | TKN_DIV_INT | TKN_MOD;
+
+TKN_PLUS: '+';
+TKN_MINUS: '-';
+TKN_TIMES: '*';
+TKN_DIV: '/';
+TKN_POWER: '^';
+TKN_EQUAL: '=';
+TKN_NEQ: '<>';
+TKN_LESS: '<';
+TKN_LEQ: '<=';
+TKN_GREATER: '>';
+TKN_GEQ: '>=';
+TKN_DIV_INT: D I V;
+TKN_MOD: M O D;
+
 
 // literals
 LETRAS: [A-Za-zÀ-ÖØ-öø-ÿ];
@@ -145,6 +165,8 @@ fragment Z : [zZ];
 
 ID: [a-zA-Z_]+[a-zA-Z_0-9]*;
 
-//skipped rules
+// skipped rules
 SHORT_COMMENT: '//' ~[\r\n]* -> skip;
 LONG_COMMENT: '/*' .*? '*/' -> skip;
+TABS: [\t]+ -> skip;
+NUEVA_LINEA: [\r\n]+ -> skip;

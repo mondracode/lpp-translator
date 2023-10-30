@@ -2,7 +2,7 @@ grammar lpp;
 
 s: dec_registros dec_variables dec_funciones prog;
 
-dec_registros: REGISTRO ID dec_variables FIN REGISTRO;
+dec_registros: (REGISTRO ID dec_variables FIN REGISTRO)*;
 
 dec_variables: dec_variable*;
 
@@ -54,7 +54,7 @@ literal: CHAR_LITERAL | CADENA_LITERAL | REAL_LITERAL | ENTERO_LITERAL | BOOLEAN
 
 tipo: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo;
 
-cadena: CADENA TKN_OPENING_BRA ENTERO_LITERAL TKN_CLOSING_BRA;
+cadena: CADENA TKN_OPENING_BRA exp TKN_CLOSING_BRA;
 
 arreglo: ARREGLO TKN_OPENING_BRA ENTERO_LITERAL TKN_CLOSING_BRA DE tipo;
 
@@ -129,9 +129,9 @@ CADENA_LITERAL: TKN_DOUBLE_QUOTE LETRAS_CADENA* TKN_DOUBLE_QUOTE;
 
 fragment DIGITOS: [0-9];
 
-REAL_LITERAL: DIGITOS+ ('.' DIGITOS+)?;
+ENTERO_LITERAL: TKN_MINUS? DIGITOS+;
 
-ENTERO_LITERAL: DIGITOS+;
+REAL_LITERAL: TKN_MINUS? DIGITOS+ ('.' DIGITOS+)?;
 
 BOOLEANO_LITERAL: ( VERDADERO | FALSO );
 
@@ -172,5 +172,5 @@ ID: [a-zA-Z_]+[a-zA-Z_0-9]*;
 // skipped rules
 SHORT_COMMENT: '//' ~[\r\n]* -> skip;
 LONG_COMMENT: '/*' .*? '*/' -> skip;
-TABS: [\t]+ -> skip;
+TABS: [\t ]+ -> skip;
 NUEVA_LINEA: [\r\n]+ -> skip;

@@ -144,3 +144,7 @@ fragment Y : [yY];
 fragment Z : [zZ];
 
 ID: [a-zA-Z_]+[a-zA-Z_0-9]*;
+
+//skipped rules
+SHORT_COMMENT: '//' ~[\r\n]* -> skip;
+LONG_COMMENT: '/*' .*? '*/' -> skip;

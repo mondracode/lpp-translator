@@ -1,4 +1,4 @@
-// Generated from C:/Users/itrmi/Documents/camilo_andres_gonzalez_castro/git_repositories/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
+// Generated from C:/Users/USUARIO/Documents/UN/Lenguajes/Traductor/grammar/lpp.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -25,8 +25,9 @@ public class lppParser extends Parser {
 		OPERATOR=37, TKN_PLUS=38, TKN_MINUS=39, TKN_TIMES=40, TKN_DIV=41, TKN_POWER=42, 
 		TKN_EQUAL=43, TKN_NEQ=44, TKN_LESS=45, TKN_LEQ=46, TKN_GREATER=47, TKN_GEQ=48, 
 		TKN_DIV_INT=49, TKN_MOD=50, CHAR_LITERAL=51, CADENA_LITERAL=52, ENTERO_LITERAL=53, 
-		REAL_LITERAL=54, BOOLEANO_LITERAL=55, VERDADERO=56, FALSO=57, ID=58, SHORT_COMMENT=59, 
-		LONG_COMMENT=60, TABS=61, NUEVA_LINEA=62;
+		REAL_LITERAL=54, NEGATIVO_ENTERO=55, NEGATIVO_REAL=56, BOOLEANO_LITERAL=57, 
+		VERDADERO=58, FALSO=59, ID=60, SHORT_COMMENT=61, LONG_COMMENT=62, TABS=63, 
+		NUEVA_LINEA=64;
 	public static final int
 		RULE_s = 0, RULE_dec_registros = 1, RULE_dec_variables = 2, RULE_dec_variable = 3, 
 		RULE_dec_funciones = 4, RULE_dec_funcion = 5, RULE_parametros = 6, RULE_dec_var = 7, 
@@ -67,9 +68,9 @@ public class lppParser extends Parser {
 			"CARACTER", "CADENA", "ARREGLO", "HAGA", "DE", "OPERATOR", "TKN_PLUS", 
 			"TKN_MINUS", "TKN_TIMES", "TKN_DIV", "TKN_POWER", "TKN_EQUAL", "TKN_NEQ", 
 			"TKN_LESS", "TKN_LEQ", "TKN_GREATER", "TKN_GEQ", "TKN_DIV_INT", "TKN_MOD", 
-			"CHAR_LITERAL", "CADENA_LITERAL", "ENTERO_LITERAL", "REAL_LITERAL", "BOOLEANO_LITERAL", 
-			"VERDADERO", "FALSO", "ID", "SHORT_COMMENT", "LONG_COMMENT", "TABS", 
-			"NUEVA_LINEA"
+			"CHAR_LITERAL", "CADENA_LITERAL", "ENTERO_LITERAL", "REAL_LITERAL", "NEGATIVO_ENTERO", 
+			"NEGATIVO_REAL", "BOOLEANO_LITERAL", "VERDADERO", "FALSO", "ID", "SHORT_COMMENT", 
+			"LONG_COMMENT", "TABS", "NUEVA_LINEA"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -952,6 +953,8 @@ public class lppParser extends Parser {
 					case CADENA_LITERAL:
 					case ENTERO_LITERAL:
 					case REAL_LITERAL:
+					case NEGATIVO_ENTERO:
+					case NEGATIVO_REAL:
 					case BOOLEANO_LITERAL:
 					case ID:
 						{
@@ -1344,7 +1347,7 @@ public class lppParser extends Parser {
 				setState(183); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 358036170375954440L) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & 1438900080944873480L) != 0) );
 			setState(186);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
@@ -1952,6 +1955,8 @@ public class lppParser extends Parser {
 		public TerminalNode REAL_LITERAL() { return getToken(lppParser.REAL_LITERAL, 0); }
 		public TerminalNode ENTERO_LITERAL() { return getToken(lppParser.ENTERO_LITERAL, 0); }
 		public TerminalNode BOOLEANO_LITERAL() { return getToken(lppParser.BOOLEANO_LITERAL, 0); }
+		public TerminalNode NEGATIVO_ENTERO() { return getToken(lppParser.NEGATIVO_ENTERO, 0); }
+		public TerminalNode NEGATIVO_REAL() { return getToken(lppParser.NEGATIVO_REAL, 0); }
 		public LiteralContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1980,7 +1985,7 @@ public class lppParser extends Parser {
 			{
 			setState(261);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 69805794224242688L) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 285978576338026496L) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -2299,7 +2304,7 @@ public class lppParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001>\u0124\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001@\u0124\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
 		"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007\u0002"+
 		"\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0002\u000b\u0007\u000b\u0002"+
@@ -2346,7 +2351,7 @@ public class lppParser extends Parser {
 		"\u001d\u0001\u001d\u0005\u001d\u011f\b\u001d\n\u001d\f\u001d\u0122\t\u001d"+
 		"\u0001\u001d\u0000\u00010\u001e\u0000\u0002\u0004\u0006\b\n\f\u000e\u0010"+
 		"\u0012\u0014\u0016\u0018\u001a\u001c\u001e \"$&(*,.02468:\u0000\u0001"+
-		"\u0001\u000037\u0129\u0000<\u0001\u0000\u0000\u0000\u0002I\u0001\u0000"+
+		"\u0001\u000039\u0129\u0000<\u0001\u0000\u0000\u0000\u0002I\u0001\u0000"+
 		"\u0000\u0000\u0004O\u0001\u0000\u0000\u0000\u0006R\u0001\u0000\u0000\u0000"+
 		"\b_\u0001\u0000\u0000\u0000\nb\u0001\u0000\u0000\u0000\fu\u0001\u0000"+
 		"\u0000\u0000\u000ex\u0001\u0000\u0000\u0000\u0010}\u0001\u0000\u0000\u0000"+
@@ -2361,21 +2366,21 @@ public class lppParser extends Parser {
 		"\u0000\u0000\u00006\u010f\u0001\u0000\u0000\u00008\u0114\u0001\u0000\u0000"+
 		"\u0000:\u011b\u0001\u0000\u0000\u0000<=\u0003\u0002\u0001\u0000=>\u0003"+
 		"\u0004\u0002\u0000>?\u0003\b\u0004\u0000?@\u0003\u0012\t\u0000@\u0001"+
-		"\u0001\u0000\u0000\u0000AB\u0005\u000b\u0000\u0000BC\u0005:\u0000\u0000"+
+		"\u0001\u0000\u0000\u0000AB\u0005\u000b\u0000\u0000BC\u0005<\u0000\u0000"+
 		"CD\u0003\u0004\u0002\u0000DE\u0005\f\u0000\u0000EF\u0005\u000b\u0000\u0000"+
 		"FH\u0001\u0000\u0000\u0000GA\u0001\u0000\u0000\u0000HK\u0001\u0000\u0000"+
 		"\u0000IG\u0001\u0000\u0000\u0000IJ\u0001\u0000\u0000\u0000J\u0003\u0001"+
 		"\u0000\u0000\u0000KI\u0001\u0000\u0000\u0000LN\u0003\u0006\u0003\u0000"+
 		"ML\u0001\u0000\u0000\u0000NQ\u0001\u0000\u0000\u0000OM\u0001\u0000\u0000"+
 		"\u0000OP\u0001\u0000\u0000\u0000P\u0005\u0001\u0000\u0000\u0000QO\u0001"+
-		"\u0000\u0000\u0000RS\u00034\u001a\u0000SX\u0005:\u0000\u0000TU\u0005\u0001"+
-		"\u0000\u0000UW\u0005:\u0000\u0000VT\u0001\u0000\u0000\u0000WZ\u0001\u0000"+
+		"\u0000\u0000\u0000RS\u00034\u001a\u0000SX\u0005<\u0000\u0000TU\u0005\u0001"+
+		"\u0000\u0000UW\u0005<\u0000\u0000VT\u0001\u0000\u0000\u0000WZ\u0001\u0000"+
 		"\u0000\u0000XV\u0001\u0000\u0000\u0000XY\u0001\u0000\u0000\u0000Y\u0007"+
 		"\u0001\u0000\u0000\u0000ZX\u0001\u0000\u0000\u0000[^\u0003\n\u0005\u0000"+
 		"\\^\u0003\u0010\b\u0000][\u0001\u0000\u0000\u0000]\\\u0001\u0000\u0000"+
 		"\u0000^a\u0001\u0000\u0000\u0000_]\u0001\u0000\u0000\u0000_`\u0001\u0000"+
 		"\u0000\u0000`\t\u0001\u0000\u0000\u0000a_\u0001\u0000\u0000\u0000bc\u0005"+
-		"\r\u0000\u0000cd\u0005:\u0000\u0000de\u0003\f\u0006\u0000ef\u0005\u0002"+
+		"\r\u0000\u0000cd\u0005<\u0000\u0000de\u0003\f\u0006\u0000ef\u0005\u0002"+
 		"\u0000\u0000fg\u00034\u001a\u0000gh\u0003\u0004\u0002\u0000hi\u0003\u0012"+
 		"\t\u0000i\u000b\u0001\u0000\u0000\u0000jk\u0005\u0003\u0000\u0000kp\u0003"+
 		"\u000e\u0007\u0000lm\u0005\u0001\u0000\u0000mo\u0003\u000e\u0007\u0000"+
@@ -2384,9 +2389,9 @@ public class lppParser extends Parser {
 		"\u0000\u0000st\u0005\u0004\u0000\u0000tv\u0001\u0000\u0000\u0000uj\u0001"+
 		"\u0000\u0000\u0000uv\u0001\u0000\u0000\u0000v\r\u0001\u0000\u0000\u0000"+
 		"wy\u0005\u000e\u0000\u0000xw\u0001\u0000\u0000\u0000xy\u0001\u0000\u0000"+
-		"\u0000yz\u0001\u0000\u0000\u0000z{\u00034\u001a\u0000{|\u0005:\u0000\u0000"+
+		"\u0000yz\u0001\u0000\u0000\u0000z{\u00034\u001a\u0000{|\u0005<\u0000\u0000"+
 		"|\u000f\u0001\u0000\u0000\u0000}~\u0005\u000f\u0000\u0000~\u007f\u0005"+
-		":\u0000\u0000\u007f\u0080\u0003\f\u0006\u0000\u0080\u0081\u0003\u0004"+
+		"<\u0000\u0000\u007f\u0080\u0003\f\u0006\u0000\u0080\u0081\u0003\u0004"+
 		"\u0002\u0000\u0081\u0082\u0003\u0012\t\u0000\u0082\u0011\u0001\u0000\u0000"+
 		"\u0000\u0083\u0084\u0005\u0010\u0000\u0000\u0084\u0085\u0003\u0014\n\u0000"+
 		"\u0085\u0086\u0005\f\u0000\u0000\u0086\u0013\u0001\u0000\u0000\u0000\u0087"+
@@ -2405,7 +2410,7 @@ public class lppParser extends Parser {
 		"\u0005\u0011\u0000\u0000\u0097\u0098\u0003:\u001d\u0000\u0098\u0017\u0001"+
 		"\u0000\u0000\u0000\u0099\u009a\u0005\u0012\u0000\u0000\u009a\u009b\u0003"+
 		":\u001d\u0000\u009b\u0019\u0001\u0000\u0000\u0000\u009c\u009d\u0005\u0013"+
-		"\u0000\u0000\u009d\u00a2\u0005:\u0000\u0000\u009e\u009f\u0005\u0003\u0000"+
+		"\u0000\u0000\u009d\u00a2\u0005<\u0000\u0000\u009e\u009f\u0005\u0003\u0000"+
 		"\u0000\u009f\u00a0\u0003:\u001d\u0000\u00a0\u00a1\u0005\u0004\u0000\u0000"+
 		"\u00a1\u00a3\u0001\u0000\u0000\u0000\u00a2\u009e\u0001\u0000\u0000\u0000"+
 		"\u00a2\u00a3\u0001\u0000\u0000\u0000\u00a3\u001b\u0001\u0000\u0000\u0000"+
@@ -2417,7 +2422,7 @@ public class lppParser extends Parser {
 		"\u0016\u0000\u0000\u00af\u00b1\u0003\u0014\n\u0000\u00b0\u00ac\u0001\u0000"+
 		"\u0000\u0000\u00b0\u00ae\u0001\u0000\u0000\u0000\u00b0\u00b1\u0001\u0000"+
 		"\u0000\u0000\u00b1\u001f\u0001\u0000\u0000\u0000\u00b2\u00b3\u0005\u0017"+
-		"\u0000\u0000\u00b3\u00b5\u0005:\u0000\u0000\u00b4\u00b6\u0003\"\u0011"+
+		"\u0000\u0000\u00b3\u00b5\u0005<\u0000\u0000\u00b4\u00b6\u0003\"\u0011"+
 		"\u0000\u00b5\u00b4\u0001\u0000\u0000\u0000\u00b6\u00b7\u0001\u0000\u0000"+
 		"\u0000\u00b7\u00b5\u0001\u0000\u0000\u0000\u00b7\u00b8\u0001\u0000\u0000"+
 		"\u0000\u00b8\u00ba\u0001\u0000\u0000\u0000\u00b9\u00bb\u0003$\u0012\u0000"+
@@ -2442,7 +2447,7 @@ public class lppParser extends Parser {
 		"\u0000\u00e0\u00e1\u00030\u0018\u0000\u00e1-\u0001\u0000\u0000\u0000\u00e2"+
 		"\u00e3\u0005\u001c\u0000\u0000\u00e3\u00e4\u00030\u0018\u0000\u00e4/\u0001"+
 		"\u0000\u0000\u0000\u00e5\u00e6\u0006\u0018\uffff\uffff\u0000\u00e6\u00f4"+
-		"\u00032\u0019\u0000\u00e7\u00f4\u0005:\u0000\u0000\u00e8\u00ed\u0005:"+
+		"\u00032\u0019\u0000\u00e7\u00f4\u0005<\u0000\u0000\u00e8\u00ed\u0005<"+
 		"\u0000\u0000\u00e9\u00ea\u0005\u0003\u0000\u0000\u00ea\u00eb\u0003:\u001d"+
 		"\u0000\u00eb\u00ec\u0005\u0004\u0000\u0000\u00ec\u00ee\u0001\u0000\u0000"+
 		"\u0000\u00ed\u00e9\u0001\u0000\u0000\u0000\u00ed\u00ee\u0001\u0000\u0000"+
@@ -2455,7 +2460,7 @@ public class lppParser extends Parser {
 		"\u0101\u00030\u0018\u0002\u00f8\u00f9\n\u0005\u0000\u0000\u00f9\u00fa"+
 		"\u0005\u0006\u0000\u0000\u00fa\u00fb\u0003:\u001d\u0000\u00fb\u00fc\u0005"+
 		"\u0007\u0000\u0000\u00fc\u0101\u0001\u0000\u0000\u0000\u00fd\u00fe\n\u0004"+
-		"\u0000\u0000\u00fe\u00ff\u0005\b\u0000\u0000\u00ff\u0101\u0005:\u0000"+
+		"\u0000\u0000\u00fe\u00ff\u0005\b\u0000\u0000\u00ff\u0101\u0005<\u0000"+
 		"\u0000\u0100\u00f5\u0001\u0000\u0000\u0000\u0100\u00f8\u0001\u0000\u0000"+
 		"\u0000\u0100\u00fd\u0001\u0000\u0000\u0000\u0101\u0104\u0001\u0000\u0000"+
 		"\u0000\u0102\u0100\u0001\u0000\u0000\u0000\u0102\u0103\u0001\u0000\u0000"+

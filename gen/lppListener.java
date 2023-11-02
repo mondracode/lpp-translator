@@ -1,4 +1,4 @@
-// Generated from C:/Users/itrmi/Documents/camilo_andres_gonzalez_castro/git_repositories/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
+// Generated from C:/Users/USUARIO/Documents/UN/Lenguajes/Traductor/grammar/lpp.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -247,12 +247,12 @@ public interface lppListener extends ParseTreeListener {
 	 */
 	void exitRetorne(lppParser.RetorneContext ctx);
 	/**
-	 * Enter a parse tree produced by .
+	 * Enter a parse tree produced by {@link lppParser#exp}.
 	 * @param ctx the parse tree
 	 */
 	void enterExp(lppParser.ExpContext ctx);
 	/**
-	 * Exit a parse tree produced.
+	 * Exit a parse tree produced by {@link lppParser#exp}.
 	 * @param ctx the parse tree
 	 */
 	void exitExp(lppParser.ExpContext ctx);

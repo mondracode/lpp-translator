@@ -5,7 +5,7 @@ registro estudiante
 	caracter tipo_sangre
 	enteRo matricula
 	real promedio
-	arreglo[2] de cadena[10] arreglo_cadenas
+	arreglo[2] de arreglo[3] de cadena[10] arreglo_cadenas
 fin registro
 
 

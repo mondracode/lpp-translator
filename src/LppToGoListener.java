@@ -12,10 +12,6 @@ public class LppToGoListener extends lppBaseListener{
         StringBuilder result = new StringBuilder();
         String variableTipo = ctx.getText().toLowerCase();
 
-        if(!variableTipo.contains("arreglo")) {
-            result.append(" ");
-        }
-
         if(variableTipo.contains("cadena")) {
             result.append("string");
         }
@@ -61,12 +57,12 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterDec_variable(lppParser.Dec_variableContext ctx) {
-        System.out.print(ctx.ID().getText());
+        System.out.print(ctx.ID().getText() + " ");
     }
 
     @Override
     public void enterDec_variable_global(lppParser.Dec_variable_globalContext ctx) {
-        System.out.print("var " + ctx.ID().getText());
+        System.out.print("var " + ctx.ID().getText() + " ");
     }
 
     @Override
@@ -77,7 +73,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterDec_sig_variable(lppParser.Dec_sig_variableContext ctx) {
-        System.out.print(", " + ctx.ID().getText());
+        System.out.print(", " + ctx.ID().getText() + " ");
     }
 
     @Override
@@ -110,7 +106,17 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterArreglo_variable(lppParser.Arreglo_variableContext ctx) {
-        System.out.print(" [" + ctx.ENTERO_LITERAL().getText() + "]");
+        System.out.print("[" + ctx.ENTERO_LITERAL().getText() + "]");
+    }
+
+    @Override
+    public void enterProg(lppParser.ProgContext ctx) {
+        System.out.print("\nfunc main(){\n");
+    }
+
+    @Override
+    public void exitProg(lppParser.ProgContext ctx) {
+        System.out.print("}");
     }
 
     @Override

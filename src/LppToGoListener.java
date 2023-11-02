@@ -8,6 +8,38 @@ public class LppToGoListener extends lppBaseListener{
         return str.substring(0, 1).toUpperCase() + str.substring(1);
     };
 
+    private String getVarType(lppParser.Tipo_variableContext ctx) {
+        StringBuilder result = new StringBuilder();
+        String variableTipo = ctx.getText().toLowerCase();
+
+        if(!variableTipo.contains("arreglo")) {
+            result.append(" ");
+        }
+
+        if(variableTipo.contains("cadena")) {
+            result.append("string");
+        }
+        switch (variableTipo) {
+            case "entero":
+                result.append("int");
+                break;
+            case "real":
+                result.append("float32");
+                break;
+            case "booleano":
+                result.append("bool");
+                break;
+            case "caracter":
+                result.append("rune");
+                break;
+            case "cadena":
+                result.append("string");
+                break;
+        }
+
+        return result.toString();
+    }
+
     private StringBuilder translatedGo = new StringBuilder();
 
     public String getTranslatedJavaScript() {
@@ -39,32 +71,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void exitDec_variable_global(lppParser.Dec_variable_globalContext ctx) {
-        String variableTipo = ctx.tipo_variable().getText().toLowerCase();
-
-        if(!variableTipo.contains("arreglo")) {
-            System.out.print(" ");
-        }
-
-        if(variableTipo.contains("cadena")) {
-            System.out.print("string");
-        }
-        switch (variableTipo) {
-            case "entero":
-                System.out.print("int");
-                break;
-            case "real":
-                System.out.print("float32");
-                break;
-            case "booleano":
-                System.out.print("bool");
-                break;
-            case "caracter":
-                System.out.print("rune");
-                break;
-            case "cadena":
-                System.out.print("string");
-                break;
-        }
+        System.out.print(getVarType(ctx.tipo_variable()));
         System.out.println();
     }
 
@@ -75,33 +82,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void exitDec_variable(lppParser.Dec_variableContext ctx) {
-        String variableTipo = ctx.tipo_variable().getText().toLowerCase();
-
-        if(!variableTipo.contains("arreglo")) {
-            System.out.print(" ");
-        }
-
-        if(variableTipo.contains("cadena")) {
-            System.out.print("string");
-        }
-        switch (variableTipo) {
-            case "entero":
-                System.out.print("int");
-                break;
-            case "real":
-                System.out.print("float32");
-                break;
-            case "booleano":
-                System.out.print("bool");
-                break;
-            case "caracter":
-                System.out.print("rune");
-                break;
-            case "cadena":
-                System.out.print("string");
-                break;
-        }
-
+        System.out.print(getVarType(ctx.tipo_variable()));
         System.out.println();
     }
 

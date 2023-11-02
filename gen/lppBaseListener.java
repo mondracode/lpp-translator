@@ -1,4 +1,4 @@
-// Generated from C:/Users/itrmi/Documents/camilo_andres_gonzalez_castro/git_repositories/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
+// Generated from C:/Users/smggu/OneDrive/Documentos/github.com/mondracode/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -59,6 +59,18 @@ public class lppBaseListener implements lppListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDec_variable(lppParser.Dec_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDec_sig_variable(lppParser.Dec_sig_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDec_sig_variable(lppParser.Dec_sig_variableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -340,6 +352,18 @@ public class lppBaseListener implements lppListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTipo_variable(lppParser.Tipo_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTipo_variable(lppParser.Tipo_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCadena(lppParser.CadenaContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -359,6 +383,18 @@ public class lppBaseListener implements lppListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitArreglo(lppParser.ArregloContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArreglo_variable(lppParser.Arreglo_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArreglo_variable(lppParser.Arreglo_variableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

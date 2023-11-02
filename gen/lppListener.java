@@ -1,4 +1,4 @@
-// Generated from C:/Users/itrmi/Documents/camilo_andres_gonzalez_castro/git_repositories/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
+// Generated from C:/Users/smggu/OneDrive/Documentos/github.com/mondracode/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -46,6 +46,16 @@ public interface lppListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDec_variable(lppParser.Dec_variableContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link lppParser#dec_sig_variable}.
+	 * @param ctx the parse tree
+	 */
+	void enterDec_sig_variable(lppParser.Dec_sig_variableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#dec_sig_variable}.
+	 * @param ctx the parse tree
+	 */
+	void exitDec_sig_variable(lppParser.Dec_sig_variableContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link lppParser#dec_funciones}.
 	 * @param ctx the parse tree
@@ -247,12 +257,12 @@ public interface lppListener extends ParseTreeListener {
 	 */
 	void exitRetorne(lppParser.RetorneContext ctx);
 	/**
-	 * Enter a parse tree produced by .
+	 * Enter a parse tree produced by {@link lppParser#exp}.
 	 * @param ctx the parse tree
 	 */
 	void enterExp(lppParser.ExpContext ctx);
 	/**
-	 * Exit a parse tree produced.
+	 * Exit a parse tree produced by {@link lppParser#exp}.
 	 * @param ctx the parse tree
 	 */
 	void exitExp(lppParser.ExpContext ctx);
@@ -277,6 +287,16 @@ public interface lppListener extends ParseTreeListener {
 	 */
 	void exitTipo(lppParser.TipoContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link lppParser#tipo_variable}.
+	 * @param ctx the parse tree
+	 */
+	void enterTipo_variable(lppParser.Tipo_variableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#tipo_variable}.
+	 * @param ctx the parse tree
+	 */
+	void exitTipo_variable(lppParser.Tipo_variableContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link lppParser#cadena}.
 	 * @param ctx the parse tree
 	 */
@@ -296,6 +316,16 @@ public interface lppListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitArreglo(lppParser.ArregloContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link lppParser#arreglo_variable}.
+	 * @param ctx the parse tree
+	 */
+	void enterArreglo_variable(lppParser.Arreglo_variableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#arreglo_variable}.
+	 * @param ctx the parse tree
+	 */
+	void exitArreglo_variable(lppParser.Arreglo_variableContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link lppParser#exp_list}.
 	 * @param ctx the parse tree

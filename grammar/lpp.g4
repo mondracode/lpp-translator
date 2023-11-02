@@ -6,7 +6,9 @@ dec_registros: (REGISTRO ID dec_variables FIN REGISTRO)*;
 
 dec_variables: dec_variable*;
 
-dec_variable: tipo ID (TKN_COMMA ID)*;
+dec_variable: tipo_variable ID dec_sig_variable*;
+
+dec_sig_variable: TKN_COMMA ID;
 
 dec_funciones: (dec_funcion | dec_procedimiento)*;
 
@@ -54,9 +56,13 @@ literal: CHAR_LITERAL | CADENA_LITERAL | REAL_LITERAL | ENTERO_LITERAL | BOOLEAN
 
 tipo: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo;
 
-cadena: CADENA TKN_OPENING_BRA exp TKN_CLOSING_BRA;
+tipo_variable: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo_variable;
+
+cadena: CADENA TKN_OPENING_BRA ENTERO_LITERAL TKN_CLOSING_BRA;
 
 arreglo: ARREGLO TKN_OPENING_BRA ENTERO_LITERAL TKN_CLOSING_BRA DE tipo;
+
+arreglo_variable: ARREGLO TKN_OPENING_BRA ENTERO_LITERAL TKN_CLOSING_BRA DE tipo_variable;
 
 exp_list: exp (TKN_COMMA exp)*;
 

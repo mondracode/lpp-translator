@@ -17,6 +17,12 @@ public class Main {
             lppParser parser = new lppParser(tokens);
             ParseTree tree = parser.s(); // comienza el análisis en la regla inicial
             System.out.println(tree.toStringTree(parser)); // imprime el árbol en forma textual
+
+
+            ParseTreeWalker walker = new ParseTreeWalker();
+            walker.walk(new LppToGoListener(), tree);
+            System.out.println();
+
         } catch (Exception e){
             System.err.println("Error (Test): " + e);
         }

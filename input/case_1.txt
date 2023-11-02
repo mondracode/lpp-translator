@@ -1,3 +1,14 @@
+registro estudiante
+	cadena [10] nombre, segundo_nombre
+	cadena [10] apellido
+	entero edad
+	caracter tipo_sangre
+	enteRo matricula
+	real promedio
+	arreglo[2] de cadena[10] arreglo_cadenas
+fin registro
+
+
 // Es posible declarar más de una variable en la misma línea
 entero my_integer, variableIwillNOTUse
 real the_real_ONE

@@ -1,4 +1,4 @@
-// Generated from C:/Users/smggu/OneDrive/Documentos/github.com/mondracode/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
+// Generated from C:/Users/itrmi/Documents/camilo_andres_gonzalez_castro/git_repositories/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

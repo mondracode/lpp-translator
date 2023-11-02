@@ -1,4 +1,4 @@
-// Generated from C:/Users/smggu/OneDrive/Documentos/github.com/mondracode/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
+// Generated from C:/Users/itrmi/Documents/camilo_andres_gonzalez_castro/git_repositories/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -149,6 +149,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitS(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitS(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final SContext s() throws RecognitionException {
@@ -209,6 +214,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_registros(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_registros(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -274,6 +284,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_variables(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_variables(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Dec_variablesContext dec_variables() throws RecognitionException {
@@ -334,6 +349,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_variable(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_variable(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -402,6 +422,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_funciones(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_funciones(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -482,6 +507,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_funcion(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_funcion(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Dec_funcionContext dec_funcion() throws RecognitionException {
@@ -542,6 +572,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitParametros(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitParametros(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -614,6 +649,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_var(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_var(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Dec_varContext dec_var() throws RecognitionException {
@@ -675,6 +715,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_procedimiento(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_procedimiento(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Dec_procedimientoContext dec_procedimiento() throws RecognitionException {
@@ -724,6 +769,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitProg(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitProg(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -825,6 +875,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitCmds(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitCmds(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -950,6 +1005,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitEscriba(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitEscriba(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final EscribaContext escriba() throws RecognitionException {
@@ -992,6 +1052,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitLea(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitLea(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1038,6 +1103,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitLlamar(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitLlamar(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1107,6 +1177,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitSi(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitSi(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final SiContext si() throws RecognitionException {
@@ -1162,6 +1237,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitSino(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitSino(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1232,6 +1312,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitCaso(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitCaso(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1308,6 +1393,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitOpcion(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitOpcion(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final OpcionContext opcion() throws RecognitionException {
@@ -1353,6 +1443,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitCaso_sino(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitCaso_sino(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1402,6 +1497,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitRepita(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitRepita(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1462,6 +1562,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitPara(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitPara(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1530,6 +1635,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitMientras(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitMientras(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final MientrasContext mientras() throws RecognitionException {
@@ -1584,6 +1694,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitAsigne(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitAsigne(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final AsigneContext asigne() throws RecognitionException {
@@ -1628,6 +1743,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitRetorne(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitRetorne(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1686,6 +1806,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitExp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitExp(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1839,6 +1964,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitLiteral(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitLiteral(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final LiteralContext literal() throws RecognitionException {
@@ -1894,6 +2024,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitTipo(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitTipo(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1981,6 +2116,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitCadena(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitCadena(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final CadenaContext cadena() throws RecognitionException {
@@ -2031,6 +2171,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitArreglo(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitArreglo(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2088,6 +2233,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitExp_list(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitExp_list(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 

@@ -1,12 +1,16 @@
 grammar lpp;
 
-s: dec_registros dec_variables dec_funciones prog;
+s: dec_registros dec_variables_globales dec_funciones prog;
 
 dec_registros: (REGISTRO ID dec_variables FIN REGISTRO)*;
+
+dec_variables_globales: dec_variable_global*;
 
 dec_variables: dec_variable*;
 
 dec_variable: tipo_variable ID dec_sig_variable*;
+
+dec_variable_global: tipo_variable ID dec_sig_variable*;
 
 dec_sig_variable: TKN_COMMA ID;
 

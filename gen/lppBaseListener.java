@@ -40,6 +40,18 @@ public class lppBaseListener implements lppListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDec_variables_globales(lppParser.Dec_variables_globalesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDec_variables_globales(lppParser.Dec_variables_globalesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDec_variables(lppParser.Dec_variablesContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -59,6 +71,18 @@ public class lppBaseListener implements lppListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDec_variable(lppParser.Dec_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDec_variable_global(lppParser.Dec_variable_globalContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDec_variable_global(lppParser.Dec_variable_globalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

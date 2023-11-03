@@ -1,4 +1,4 @@
-// Generated from C:/Users/itrmi/Documents/camilo_andres_gonzalez_castro/git_repositories/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
+// Generated from C:/Users/smggu/OneDrive/Documentos/github.com/mondracode/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -40,6 +40,18 @@ public class lppBaseListener implements lppListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDec_variables_globales(lppParser.Dec_variables_globalesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDec_variables_globales(lppParser.Dec_variables_globalesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDec_variables(lppParser.Dec_variablesContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -59,6 +71,30 @@ public class lppBaseListener implements lppListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitDec_variable(lppParser.Dec_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDec_variable_global(lppParser.Dec_variable_globalContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDec_variable_global(lppParser.Dec_variable_globalContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDec_sig_variable(lppParser.Dec_sig_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDec_sig_variable(lppParser.Dec_sig_variableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -100,6 +136,18 @@ public class lppBaseListener implements lppListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterParametro_sig(lppParser.Parametro_sigContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParametro_sig(lppParser.Parametro_sigContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDec_var(lppParser.Dec_varContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -131,6 +179,18 @@ public class lppBaseListener implements lppListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitProg(lppParser.ProgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterProg_main(lppParser.Prog_mainContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitProg_main(lppParser.Prog_mainContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -316,6 +376,18 @@ public class lppBaseListener implements lppListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterOperator(lppParser.OperatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOperator(lppParser.OperatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterLiteral(lppParser.LiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -340,6 +412,18 @@ public class lppBaseListener implements lppListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTipo_variable(lppParser.Tipo_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTipo_variable(lppParser.Tipo_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterCadena(lppParser.CadenaContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -359,6 +443,18 @@ public class lppBaseListener implements lppListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitArreglo(lppParser.ArregloContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterArreglo_variable(lppParser.Arreglo_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitArreglo_variable(lppParser.Arreglo_variableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

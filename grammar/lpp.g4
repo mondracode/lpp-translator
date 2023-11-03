@@ -1,24 +1,34 @@
 grammar lpp;
 
-s: dec_registros dec_variables dec_funciones prog;
+s: dec_registros dec_variables_globales dec_funciones prog;
 
 dec_registros: (REGISTRO ID dec_variables FIN REGISTRO)*;
 
+dec_variables_globales: dec_variable_global*;
+
 dec_variables: dec_variable*;
 
-dec_variable: tipo ID (TKN_COMMA ID)*;
+dec_variable: tipo_variable ID dec_sig_variable*;
+
+dec_variable_global: tipo_variable ID dec_sig_variable*;
+
+dec_sig_variable: TKN_COMMA ID;
 
 dec_funciones: (dec_funcion | dec_procedimiento)*;
 
 dec_funcion: FUNCION ID parametros TKN_COLON tipo dec_variables prog;
 
-parametros: (TKN_OPENING_PAR dec_var (TKN_COMMA dec_var)* TKN_CLOSING_PAR)?;
+parametros: (TKN_OPENING_PAR dec_var parametro_sig* TKN_CLOSING_PAR)?;
+
+parametro_sig: TKN_COMMA dec_var;
 
 dec_var: (VAR)? tipo ID;
 
 dec_procedimiento: PROCEDIMIENTO ID parametros dec_variables prog;
 
 prog: INICIO cmds FIN;
+
+prog_main: INICIO cmds FIN;
 
 cmds: (escriba | lea | llamar | si | caso | repita | para | mientras | asigne | retorne)*;
 
@@ -48,15 +58,21 @@ asigne: exp TKN_ASSIGN exp;
 
 retorne: RETORNE exp;
 
-exp: literal | ID | exp TKN_OPENING_BRA exp_list TKN_CLOSING_BRA | exp TKN_PERIOD ID | ID (TKN_OPENING_PAR exp_list TKN_CLOSING_PAR)? | TKN_OPENING_PAR exp TKN_CLOSING_PAR | exp OPERATOR exp;
+exp: literal | ID | exp TKN_OPENING_BRA exp_list TKN_CLOSING_BRA | exp TKN_PERIOD ID | ID (TKN_OPENING_PAR exp_list TKN_CLOSING_PAR)? | TKN_OPENING_PAR exp TKN_CLOSING_PAR | exp operator exp | exp TKN_MINUS exp;
 
-literal: CHAR_LITERAL | CADENA_LITERAL | REAL_LITERAL | ENTERO_LITERAL | BOOLEANO_LITERAL;
+operator: OPERATOR;
+
+literal: CHAR_LITERAL | CADENA_LITERAL | REAL_LITERAL | ENTERO_LITERAL | TKN_MINUS REAL_LITERAL | TKN_MINUS ENTERO_LITERAL | BOOLEANO_LITERAL;
 
 tipo: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo;
 
-cadena: CADENA TKN_OPENING_BRA exp TKN_CLOSING_BRA;
+tipo_variable: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo_variable;
+
+cadena: CADENA TKN_OPENING_BRA ENTERO_LITERAL TKN_CLOSING_BRA;
 
 arreglo: ARREGLO TKN_OPENING_BRA ENTERO_LITERAL TKN_CLOSING_BRA DE tipo;
+
+arreglo_variable: ARREGLO TKN_OPENING_BRA ENTERO_LITERAL TKN_CLOSING_BRA DE tipo_variable;
 
 exp_list: exp (TKN_COMMA exp)*;
 
@@ -101,7 +117,7 @@ HAGA: H A G A;
 DE: D E;
 
 // operators
-OPERATOR: TKN_PLUS | TKN_MINUS | TKN_TIMES | TKN_DIV | TKN_POWER | TKN_EQUAL | TKN_NEQ | TKN_LESS | TKN_LEQ | TKN_GREATER | TKN_GEQ | TKN_DIV_INT | TKN_MOD;
+OPERATOR: TKN_PLUS | TKN_TIMES | TKN_DIV | TKN_POWER | TKN_EQUAL | TKN_NEQ | TKN_LESS | TKN_LEQ | TKN_GREATER | TKN_GEQ | TKN_DIV_INT | TKN_MOD;
 
 TKN_PLUS: '+';
 TKN_MINUS: '-';
@@ -129,9 +145,9 @@ CADENA_LITERAL: TKN_DOUBLE_QUOTE LETRAS_CADENA* TKN_DOUBLE_QUOTE;
 
 fragment DIGITOS: [0-9];
 
-ENTERO_LITERAL: TKN_MINUS? DIGITOS+;
+ENTERO_LITERAL: DIGITOS+;
 
-REAL_LITERAL: TKN_MINUS? DIGITOS+ ('.' DIGITOS+)?;
+REAL_LITERAL: DIGITOS+ ('.' DIGITOS+)?;
 
 BOOLEANO_LITERAL: ( VERDADERO | FALSO );
 

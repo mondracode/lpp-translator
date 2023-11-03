@@ -101,6 +101,15 @@ repita
 		acumulador<-acumulador+(i*2)
  hasta (i=20) o (acumulador mod 5=4)
 
+/*
+	Bloque de comentarios
+
+	puedo poner lo que yo quiera y no va a afectar
+
+	la compilación de mi programa ;)
+
+*/
+
 
  Para I<- 1 hasta 4 haga
  		Para K<- 1 hasta 5 haga

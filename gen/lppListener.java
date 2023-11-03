@@ -267,6 +267,16 @@ public interface lppListener extends ParseTreeListener {
 	 */
 	void exitOpcion(lppParser.OpcionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link lppParser#opcion_exp}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpcion_exp(lppParser.Opcion_expContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#opcion_exp}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpcion_exp(lppParser.Opcion_expContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link lppParser#caso_sino}.
 	 * @param ctx the parse tree
 	 */

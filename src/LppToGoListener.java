@@ -290,4 +290,34 @@ public class LppToGoListener extends lppBaseListener{
 
         System.out.print(ctx.ID().getText() + " ");
     }
+
+    @Override
+    public void enterCaso(lppParser.CasoContext ctx) {
+        System.out.println("\nswitch " + ctx.ID().getText() + " {");
+    }
+
+    @Override
+    public void exitCaso(lppParser.CasoContext ctx) {
+
+    }
+
+    @Override
+    public void enterCaso_sino(lppParser.Caso_sinoContext ctx) {
+        System.out.println("\ndefault:");
+    }
+
+    @Override
+    public void exitCaso_sino(lppParser.Caso_sinoContext ctx) {
+
+    }
+
+    @Override
+    public void enterOpcion(lppParser.OpcionContext ctx) {
+        System.out.print("\ncase ");
+    }
+
+    @Override
+    public void exitOpcion_exp(lppParser.Opcion_expContext ctx) {
+        System.out.print(":");
+    }
 }

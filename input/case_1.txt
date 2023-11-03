@@ -50,4 +50,16 @@ escriba 88 <> 33
 	escriba "El resultado de la operacion es: ",resultado
 	escriba "22222 <> 6666"
 
+caso variable
+  1,2,3:
+  	escriba("Es un número entero entre 1 y 3")
+  4:
+  	escriba("Es el número 4")
+  5:
+  	escriba("Es el número 5")
+  sino:
+  	escriba("No sé qué número es :/")
+
+  fin caso
+
 FIN

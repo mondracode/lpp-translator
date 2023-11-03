@@ -50,7 +50,9 @@ sino: (SINO si | SINO cmds)?;
 
 caso: CASO ID (opcion)+ (caso_sino)? FIN CASO;
 
-opcion: exp_list TKN_COLON cmds;
+opcion: opcion_exp TKN_COLON cmds;
+
+opcion_exp: exp_list;
 
 caso_sino: SINO TKN_COLON cmds;
 

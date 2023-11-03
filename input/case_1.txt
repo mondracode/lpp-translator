@@ -27,6 +27,6 @@ char <-'a'
 striNg <- "Hola mundo"
 
 // imprimimos los valores en consola y separados por un espacio
-escriba my_integer," ",the_real_one," ",Boolean," ",char," ",string
+escriba my_integer," ",7.7, the_real_one," ",Boolean," ",char," ",string
 
 FIN

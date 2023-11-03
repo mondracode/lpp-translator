@@ -330,7 +330,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void exitSi_aux(lppParser.Si_auxContext ctx) {
-        System.out.println("} ");
+            System.out.print("} \n");
     }
 
     @Override
@@ -340,5 +340,23 @@ public class LppToGoListener extends lppBaseListener{
         if(ctx.si() == null) {
             System.out.print(" {");
         }
+    }
+
+    @Override
+    public void exitSino(lppParser.SinoContext ctx) {
+
+        if(ctx.si() == null) {
+            System.out.print(" }\n");
+        }
+    }
+
+    @Override
+    public void enterMientras(lppParser.MientrasContext ctx) {
+        System.out.print("\nfor " + ctx.exp().getText() + " {\n");
+    }
+
+    @Override
+    public void exitMientras(lppParser.MientrasContext ctx) {
+        System.out.print("}\n\n");
     }
 }

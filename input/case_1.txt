@@ -86,4 +86,14 @@ si numero=100 entonces
 	      fin si
       fin si
 
+    mientras i<=10 haga
+    	 escriba "Valor de i: ",(i)
+    	 si i<>10 entonces
+    	 	llamar nueva_linea
+    	 fin si
+    	 i<-i+1
+    	fin mientras
+
+
+
 FIN

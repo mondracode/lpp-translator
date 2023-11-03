@@ -1,17 +1,11 @@
-import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.tree.TerminalNode;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static java.util.Map.entry;
 
 public class LppToGoListener extends lppBaseListener{
 
-    private ArrayList<String> requiredLibs = new ArrayList<>();
-    private ArrayList<String> globalVariables = new ArrayList<>();
+    private HashSet<String> requiredLibs = new HashSet<>();
+    private HashSet<String> globalVariables = new HashSet<>();
 
     private final Map<String, String> operatorCorrespondence = Map.ofEntries(
         entry("<>", "!="),
@@ -148,7 +142,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void exitProg_main(lppParser.Prog_mainContext ctx) {
-        System.out.print("}");
+        System.out.print("\n}");
     }
 
     @Override
@@ -253,7 +247,6 @@ public class LppToGoListener extends lppBaseListener{
         System.out.print(", ");
 
     }
-
 
     @Override
     public void enterDec_procedimiento(lppParser.Dec_procedimientoContext ctx) {
@@ -362,7 +355,12 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterLlamar(lppParser.LlamarContext ctx) {
-        System.out.print(ctx.ID() + "()\n");
+        if(ctx.ID().getText().equals("nueva_linea")) {
+            requiredLibs.add("fmt");
+            System.out.print("fmt.Println()\n");
+        } else {
+            System.out.print(ctx.ID() + "()\n");
+        }
     }
 
     @Override
@@ -373,5 +371,15 @@ public class LppToGoListener extends lppBaseListener{
     @Override
     public void exitRepita(lppParser.RepitaContext ctx) {
         System.out.print("}\n\n");
+    }
+
+    @Override
+    public void enterPara(lppParser.ParaContext ctx) {
+        System.out.print("for " + ctx.exp().get(0).getText() + " := " + ctx.exp().get(1).getText() + "; " + ctx.exp().get(0).getText() + " <= " + ctx.exp().get(2).getText() + "; " + ctx.exp().get(0).getText() + "++ {\n");
+    }
+
+    @Override
+    public void exitPara(lppParser.ParaContext ctx) {
+        System.out.print("}\n");
     }
 }

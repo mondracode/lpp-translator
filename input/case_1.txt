@@ -102,4 +102,12 @@ repita
  hasta (i=20) o (acumulador mod 5=4)
 
 
+ Para I<- 1 hasta 4 haga
+ 		Para K<- 1 hasta 5 haga
+ 			Escriba I
+ 		Fin para
+ 		Llamar nueva_linea
+ 	Fin para
+
+
 FIN

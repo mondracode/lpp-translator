@@ -359,4 +359,9 @@ public class LppToGoListener extends lppBaseListener{
     public void exitMientras(lppParser.MientrasContext ctx) {
         System.out.print("}\n\n");
     }
+
+    @Override
+    public void enterLlamar(lppParser.LlamarContext ctx) {
+        System.out.print(ctx.ID() + "()\n");
+    }
 }

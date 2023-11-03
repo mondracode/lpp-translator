@@ -40,6 +40,7 @@ escriba my_integer," ",7.7, -5, the_real_one," ",Boolean," ",char," ",string
 escriba 88 <> 33
 
 	resultado <- exponenciacion(2,5)
+	resultado <- exponenciacion(2,5, 3, 2)
 	escriba "El resultado de la operacion es: ",resultado
 	escriba "22222 <> 6666"
 

@@ -25,8 +25,9 @@ the_REAL_ONE <- -4.5682 // para los negativos si se escribe el signo
 BOOLEAN <- Verdadero
 char <-'a'
 striNg <- "Hola mundo"
+other_integer <- mY_integer
 
 // imprimimos los valores en consola y separados por un espacio
-escriba my_integer," ",7.7, the_real_one," ",Boolean," ",char," ",string
+escriba my_integer," ",7.7, -5, the_real_one," ",Boolean," ",char," ",string
 
 FIN

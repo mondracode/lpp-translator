@@ -1,4 +1,5 @@
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -129,26 +130,37 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void exitAsigne(lppParser.AsigneContext ctx) {
-        System.out.println();
+        String exp = ctx.exp().getLast().getText();
+
+        if(ctx.exp().getLast().ID() != null) {
+            exp = exp.toLowerCase();
+        }
+
+        System.out.println(exp);
     }
 
     @Override
-    public void enterLiteral(lppParser.LiteralContext ctx) {
-        String literal = ctx.getText();
-        switch (literal) {
-            case "Verdadero":
-                System.out.print("true");
-                break;
-            case "Falso":
-                System.out.print("false");
-                break;
-            default:
-                System.out.print(literal);
+    public void enterExp_list(lppParser.Exp_listContext ctx) {
+        for (int i = 0; i < ctx.exp().size() - 1; i++) {
+            String exp = ctx.exp().get(i).getText();
+            if(ctx.exp().get(i).ID() != null) {
+                exp = exp.toLowerCase();
+            }
+
+            System.out.print(exp + ", ");
         }
+
+        System.out.print(ctx.exp().getLast().getText());
     }
 
+    @Override
     public void enterEscriba(lppParser.EscribaContext ctx) {
         requiredLibs.add("fmt");
-        System.out.print("fmt.Print(");
+        System.out.print("\nfmt.Print(");
+    }
+
+    @Override
+    public void exitEscriba(lppParser.EscribaContext ctx) {
+        System.out.print(")\n");
     }
 }

@@ -86,17 +86,17 @@ public class LppToGoListener extends lppBaseListener{
     }
 
     @Override
-    public void enterDec_variable(lppParser.Dec_variableContext ctx) {
+    public void enterDec_variable_int(lppParser.Dec_variable_intContext ctx) {
         System.out.print(ctx.ID().getText().toLowerCase() + " ");
     }
 
     @Override
-    public void enterDec_variable_global(lppParser.Dec_variable_globalContext ctx) {
+    public void enterDec_variable(lppParser.Dec_variableContext ctx) {
         System.out.print("var " + ctx.ID().getText().toLowerCase() + " ");
     }
 
     @Override
-    public void exitDec_variable_global(lppParser.Dec_variable_globalContext ctx) {
+    public void exitDec_variable(lppParser.Dec_variableContext ctx) {
         System.out.print(getVarType(ctx.tipo_variable()));
         System.out.println();
     }
@@ -107,7 +107,7 @@ public class LppToGoListener extends lppBaseListener{
     }
 
     @Override
-    public void exitDec_variable(lppParser.Dec_variableContext ctx) {
+    public void exitDec_variable_int(lppParser.Dec_variable_intContext ctx) {
         System.out.print(getVarType(ctx.tipo_variable()));
         System.out.println();
     }
@@ -249,6 +249,36 @@ public class LppToGoListener extends lppBaseListener{
     @Override
     public void enterParametro_sig(lppParser.Parametro_sigContext ctx) {
         System.out.print(", ");
+
+    }
+
+
+    @Override
+    public void enterDec_procedimiento(lppParser.Dec_procedimientoContext ctx) {
+        System.out.println();
+        System.out.print("func " + ctx.ID().getText());
+    }
+
+    @Override
+    public void exitDec_procedimiento(lppParser.Dec_procedimientoContext ctx) {
+        System.out.println("}");
+    }
+
+    @Override
+    public void enterParametros_proc(lppParser.Parametros_procContext ctx) {
+        System.out.print("(");
+
+    }
+
+    @Override
+    public void enterParametro_sig_proc(lppParser.Parametro_sig_procContext ctx) {
+        System.out.print(", ");
+
+    }
+
+    @Override
+    public void exitParametros_proc(lppParser.Parametros_procContext ctx) {
+        System.out.print(") {\n");
 
     }
 

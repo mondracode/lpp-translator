@@ -1,16 +1,16 @@
 grammar lpp;
 
-s: dec_registros dec_variables_globales dec_funciones prog_main;
+s: dec_registros dec_variables dec_funciones prog_main;
 
-dec_registros: (REGISTRO ID dec_variables FIN REGISTRO)*;
-
-dec_variables_globales: dec_variable_global*;
+dec_registros: (REGISTRO ID dec_variables_int FIN REGISTRO)*;
 
 dec_variables: dec_variable*;
 
-dec_variable: tipo_variable ID dec_sig_variable*;
+dec_variables_int: dec_variable_int*;
 
-dec_variable_global: tipo_variable ID dec_sig_variable*;
+dec_variable_int: tipo_variable ID dec_sig_variable*;
+
+dec_variable: tipo_variable ID dec_sig_variable*;
 
 dec_sig_variable: TKN_COMMA ID;
 
@@ -24,7 +24,13 @@ parametro_sig: TKN_COMMA dec_var;
 
 dec_var: (VAR)? tipo ID;
 
-dec_procedimiento: PROCEDIMIENTO ID parametros dec_variables prog;
+dec_procedimiento: PROCEDIMIENTO ID parametros_proc dec_variables prog_proc;
+
+parametros_proc: (TKN_OPENING_PAR dec_var parametro_sig_proc* TKN_CLOSING_PAR)?;
+
+parametro_sig_proc: TKN_COMMA dec_var;
+
+prog_proc: INICIO cmds FIN;
 
 prog: INICIO cmds FIN;
 

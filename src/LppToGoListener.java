@@ -6,10 +6,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.util.Map.entry;
+
 public class LppToGoListener extends lppBaseListener{
 
     private ArrayList<String> requiredLibs = new ArrayList<>();
     private ArrayList<String> globalVariables = new ArrayList<>();
+
+    private final Map<String, String> operatorCorrespondence = Map.ofEntries(
+        entry("<>", "!="),
+        entry("+", "+"),
+        entry("-", "-"),
+        entry("*", "*"),
+        entry("/", "/"),
+        entry("^", "^"),
+        entry("=", "="),
+        entry("<", "<"),
+        entry("<=", "<="),
+        entry(">", ">"),
+        entry(">=", ">="),
+        entry("DIV", "/"),
+        entry("MOD", "%")
+    );
+
 
     private String capitalize(String str) {
         return str.substring(0, 1).toUpperCase() + str.substring(1);
@@ -44,22 +63,7 @@ public class LppToGoListener extends lppBaseListener{
     }
 
     private String convertOperators(String rawExp) {
-        Map<String, String> operadorReemplazo = new HashMap<>();
-        operadorReemplazo.put("<>", "!=");
-        operadorReemplazo.put("+", "+");
-        operadorReemplazo.put("-", "-");
-        operadorReemplazo.put("*", "*");
-        operadorReemplazo.put("/", "/");
-        operadorReemplazo.put("^", "^");
-        operadorReemplazo.put("=", "=");
-        operadorReemplazo.put("<", "<");
-        operadorReemplazo.put("<=", "<=");
-        operadorReemplazo.put(">", ">");
-        operadorReemplazo.put(">=", ">=");
-        operadorReemplazo.put("DIV", "/");
-        operadorReemplazo.put("MOD", "%");
-
-        for (Map.Entry<String, String> entry : operadorReemplazo.entrySet()) {
+        for (Map.Entry<String, String> entry : operatorCorrespondence.entrySet()) {
             rawExp = rawExp.replace(entry.getKey(), entry.getValue());
         }
 
@@ -175,16 +179,28 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterExp_list(lppParser.Exp_listContext ctx) {
+        lppParser.ExpContext lastElement = ctx.exp().get(ctx.exp().size() - 1);
+
         for (int i = 0; i < ctx.exp().size() - 1; i++) {
-            String exp = ctx.exp().get(i).getText();
-            if(ctx.exp().get(i).ID() != null) {
+            lppParser.ExpContext currentElement = ctx.exp().get(i);
+
+            String exp = currentElement.getText();
+            if(currentElement.ID() != null) {
                 exp = exp.toLowerCase();
             }
 
-            System.out.print(convertOperators(exp) + ", ");
+            if(!(currentElement.literal() != null && currentElement.literal().CADENA_LITERAL() != null)) {
+                exp = convertOperators(exp);
+            }
+
+            System.out.print(exp + ", ");
         }
 
-        System.out.print(convertOperators(ctx.exp().get(ctx.exp().size() - 1).getText()));
+        if(!(lastElement.literal() != null && lastElement.literal().CADENA_LITERAL() != null)) {
+            System.out.print(convertOperators(lastElement.getText()));
+        } else {
+            System.out.print(lastElement.getText());
+        }
     }
 
     @Override
@@ -244,5 +260,4 @@ public class LppToGoListener extends lppBaseListener{
 
         System.out.print(ctx.ID().getText() + " ");
     }
-
 }

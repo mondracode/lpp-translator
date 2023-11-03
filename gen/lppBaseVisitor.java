@@ -31,6 +31,13 @@ public class lppBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements lp
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitDec_variables_globales(lppParser.Dec_variables_globalesContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitDec_variables(lppParser.Dec_variablesContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -39,6 +46,20 @@ public class lppBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements lp
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitDec_variable(lppParser.Dec_variableContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitDec_variable_global(lppParser.Dec_variable_globalContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitDec_sig_variable(lppParser.Dec_sig_variableContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -206,6 +227,13 @@ public class lppBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements lp
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitTipo_variable(lppParser.Tipo_variableContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitCadena(lppParser.CadenaContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
@@ -214,6 +242,13 @@ public class lppBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements lp
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitArreglo(lppParser.ArregloContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitArreglo_variable(lppParser.Arreglo_variableContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

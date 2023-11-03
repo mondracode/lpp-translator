@@ -41,9 +41,8 @@ public class LppToGoListener extends lppBaseListener{
         }
     }
 
-
     @Override
-    public void exitExp(lppParser.ExpContext ctx) {
+    public void enterExp(lppParser.ExpContext ctx) {
         String operator = ctx.OPERATOR().getText();
 
         switch (operator) {

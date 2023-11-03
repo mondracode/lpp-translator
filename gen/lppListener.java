@@ -107,6 +107,16 @@ public interface lppListener extends ParseTreeListener {
 	 */
 	void exitParametros(lppParser.ParametrosContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link lppParser#parametro_sig}.
+	 * @param ctx the parse tree
+	 */
+	void enterParametro_sig(lppParser.Parametro_sigContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#parametro_sig}.
+	 * @param ctx the parse tree
+	 */
+	void exitParametro_sig(lppParser.Parametro_sigContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link lppParser#dec_var}.
 	 * @param ctx the parse tree
 	 */
@@ -136,6 +146,16 @@ public interface lppListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitProg(lppParser.ProgContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link lppParser#prog_main}.
+	 * @param ctx the parse tree
+	 */
+	void enterProg_main(lppParser.Prog_mainContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#prog_main}.
+	 * @param ctx the parse tree
+	 */
+	void exitProg_main(lppParser.Prog_mainContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link lppParser#cmds}.
 	 * @param ctx the parse tree
@@ -286,6 +306,16 @@ public interface lppListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExp(lppParser.ExpContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link lppParser#operator}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperator(lppParser.OperatorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#operator}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperator(lppParser.OperatorContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link lppParser#literal}.
 	 * @param ctx the parse tree

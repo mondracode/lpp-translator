@@ -3,10 +3,12 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class LppToGoListener extends lppBaseListener{
 
     private ArrayList<String> requiredLibs = new ArrayList<>();
+    private ArrayList<String> globalVariables = new ArrayList<>();
 
     private String capitalize(String str) {
         return str.substring(0, 1).toUpperCase() + str.substring(1);
@@ -41,10 +43,6 @@ public class LppToGoListener extends lppBaseListener{
     }
 
     private StringBuilder translatedGo = new StringBuilder();
-
-    public String getTranslatedJavaScript() {
-        return translatedGo.toString();
-    }
 
     @Override
     public void enterDec_registros(lppParser.Dec_registrosContext ctx) {
@@ -114,12 +112,12 @@ public class LppToGoListener extends lppBaseListener{
     }
 
     @Override
-    public void enterProg(lppParser.ProgContext ctx) {
+    public void enterProg_main(lppParser.Prog_mainContext ctx) {
         System.out.print("\nfunc main(){\n");
     }
 
     @Override
-    public void exitProg(lppParser.ProgContext ctx) {
+    public void exitProg_main(lppParser.Prog_mainContext ctx) {
         System.out.print("}");
     }
 
@@ -136,7 +134,7 @@ public class LppToGoListener extends lppBaseListener{
             exp = exp.toLowerCase();
         }
 
-        System.out.println(exp);
+        System.out.println(exp.replace("<>", "!="));
     }
 
     @Override
@@ -163,4 +161,52 @@ public class LppToGoListener extends lppBaseListener{
     public void exitEscriba(lppParser.EscribaContext ctx) {
         System.out.print(")\n");
     }
+    @Override
+    public void enterRetorne(lppParser.RetorneContext ctx) {
+        System.out.println("return " + ctx.exp().getText());
+    }
+
+    @Override
+    public void enterDec_funcion(lppParser.Dec_funcionContext ctx) {
+        System.out.println();
+        System.out.print("func " + ctx.ID().getText());
+    }
+
+    @Override
+    public void exitDec_funcion(lppParser.Dec_funcionContext ctx) {
+        System.out.println("}");
+    }
+
+    @Override
+    public void enterParametros(lppParser.ParametrosContext ctx) {
+        System.out.print("(");
+
+    }
+
+    @Override
+    public void exitParametros(lppParser.ParametrosContext ctx) {
+        System.out.print(") ");
+
+    }
+
+    @Override
+    public void enterProg(lppParser.ProgContext ctx) {
+        System.out.println(" {");
+    }
+
+    @Override
+    public void enterParametro_sig(lppParser.Parametro_sigContext ctx) {
+        System.out.print(", ");
+
+    }
+
+    @Override
+    public void enterDec_var(lppParser.Dec_varContext ctx) {
+        if(ctx.VAR() != null) {
+            globalVariables.add(ctx.ID().getText());
+        }
+
+        System.out.print(ctx.ID().getText() + " ");
+    }
+
 }

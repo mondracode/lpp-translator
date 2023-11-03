@@ -18,13 +18,17 @@ dec_funciones: (dec_funcion | dec_procedimiento)*;
 
 dec_funcion: FUNCION ID parametros TKN_COLON tipo dec_variables prog;
 
-parametros: (TKN_OPENING_PAR dec_var (TKN_COMMA dec_var)* TKN_CLOSING_PAR)?;
+parametros: (TKN_OPENING_PAR dec_var parametro_sig* TKN_CLOSING_PAR)?;
+
+parametro_sig: TKN_COMMA dec_var;
 
 dec_var: (VAR)? tipo ID;
 
 dec_procedimiento: PROCEDIMIENTO ID parametros dec_variables prog;
 
 prog: INICIO cmds FIN;
+
+prog_main: INICIO cmds FIN;
 
 cmds: (escriba | lea | llamar | si | caso | repita | para | mientras | asigne | retorne)*;
 
@@ -54,7 +58,9 @@ asigne: exp TKN_ASSIGN exp;
 
 retorne: RETORNE exp;
 
-exp: literal | ID | exp TKN_OPENING_BRA exp_list TKN_CLOSING_BRA | exp TKN_PERIOD ID | ID (TKN_OPENING_PAR exp_list TKN_CLOSING_PAR)? | TKN_OPENING_PAR exp TKN_CLOSING_PAR | exp OPERATOR exp | exp TKN_MINUS exp;
+exp: literal | ID | exp TKN_OPENING_BRA exp_list TKN_CLOSING_BRA | exp TKN_PERIOD ID | ID (TKN_OPENING_PAR exp_list TKN_CLOSING_PAR)? | TKN_OPENING_PAR exp TKN_CLOSING_PAR | exp operator exp | exp TKN_MINUS exp;
+
+operator: OPERATOR;
 
 literal: CHAR_LITERAL | CADENA_LITERAL | REAL_LITERAL | ENTERO_LITERAL | TKN_MINUS REAL_LITERAL | TKN_MINUS ENTERO_LITERAL | BOOLEANO_LITERAL;
 

@@ -136,6 +136,18 @@ public class lppBaseListener implements lppListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterParametro_sig(lppParser.Parametro_sigContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParametro_sig(lppParser.Parametro_sigContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDec_var(lppParser.Dec_varContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -167,6 +179,18 @@ public class lppBaseListener implements lppListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitProg(lppParser.ProgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterProg_main(lppParser.Prog_mainContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitProg_main(lppParser.Prog_mainContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -347,6 +371,18 @@ public class lppBaseListener implements lppListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExp(lppParser.ExpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOperator(lppParser.OperatorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOperator(lppParser.OperatorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

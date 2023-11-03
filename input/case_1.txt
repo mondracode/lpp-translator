@@ -16,6 +16,13 @@ Booleano boolean
 Caracter char
 cadena[10] string
 
+entero resultado
+funcion exponenciacion(entero base,entero exponente): entero
+	inicio
+		retorne base^exponente
+	fin
+
+
 Inicio
 
 // Las asignaciones no se realizan con =
@@ -25,9 +32,15 @@ the_REAL_ONE <- -4.5682 // para los negativos si se escribe el signo
 BOOLEAN <- Verdadero
 char <-'a'
 striNg <- "Hola mundo"
-other_integer <- mY_integer
+other_integer <- mY_integer.field
+operation <- 56 <> 99
 
 // imprimimos los valores en consola y separados por un espacio
 escriba my_integer," ",7.7, -5, the_real_one," ",Boolean," ",char," ",string
+escriba 88 <> 33
+
+	resultado <- exponenciacion(2,5)
+	escriba "El resultado de la operacion es: ",resultado
+	escriba "22222 <> 6666"
 
 FIN

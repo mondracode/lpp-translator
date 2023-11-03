@@ -20,13 +20,15 @@ public class LppToGoListener extends lppBaseListener{
         entry("*", "*"),
         entry("/", "/"),
         entry("^", "^"),
-        entry("=", "="),
+        entry("=", "=="),
         entry("<", "<"),
         entry("<=", "<="),
         entry(">", ">"),
         entry(">=", ">="),
-        entry("DIV", "/"),
-        entry("MOD", "%")
+        entry(" div ", " / "),
+        entry(" mod ", " % "),
+        entry(" y ", " && "),
+        entry(" o ", " || ")
     );
 
 
@@ -320,4 +322,11 @@ public class LppToGoListener extends lppBaseListener{
     public void exitOpcion_exp(lppParser.Opcion_expContext ctx) {
         System.out.print(":");
     }
+
+    @Override
+    public void enterSi(lppParser.SiContext ctx) {
+        System.out.println("if " + convertOperators(ctx.exp().getText()) + " {");
+    }
+
+
 }

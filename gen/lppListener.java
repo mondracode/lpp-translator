@@ -347,6 +347,46 @@ public interface lppListener extends ParseTreeListener {
 	 */
 	void exitExp(lppParser.ExpContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link lppParser#op_o}.
+	 * @param ctx the parse tree
+	 */
+	void enterOp_o(lppParser.Op_oContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#op_o}.
+	 * @param ctx the parse tree
+	 */
+	void exitOp_o(lppParser.Op_oContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link lppParser#op_y}.
+	 * @param ctx the parse tree
+	 */
+	void enterOp_y(lppParser.Op_yContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#op_y}.
+	 * @param ctx the parse tree
+	 */
+	void exitOp_y(lppParser.Op_yContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link lppParser#op_div}.
+	 * @param ctx the parse tree
+	 */
+	void enterOp_div(lppParser.Op_divContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#op_div}.
+	 * @param ctx the parse tree
+	 */
+	void exitOp_div(lppParser.Op_divContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link lppParser#op_mod}.
+	 * @param ctx the parse tree
+	 */
+	void enterOp_mod(lppParser.Op_modContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#op_mod}.
+	 * @param ctx the parse tree
+	 */
+	void exitOp_mod(lppParser.Op_modContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link lppParser#operator}.
 	 * @param ctx the parse tree
 	 */

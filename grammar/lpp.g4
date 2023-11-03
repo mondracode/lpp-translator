@@ -66,7 +66,15 @@ asigne: exp TKN_ASSIGN exp;
 
 retorne: RETORNE exp;
 
-exp: literal | ID | exp TKN_OPENING_BRA exp_list TKN_CLOSING_BRA | exp TKN_PERIOD ID | ID (TKN_OPENING_PAR exp_list TKN_CLOSING_PAR)? | TKN_OPENING_PAR exp TKN_CLOSING_PAR | exp operator exp | exp TKN_MINUS exp;
+exp: literal | ID | exp TKN_OPENING_BRA exp_list TKN_CLOSING_BRA | exp TKN_PERIOD ID | ID (TKN_OPENING_PAR exp_list TKN_CLOSING_PAR)? | TKN_OPENING_PAR exp TKN_CLOSING_PAR | exp operator exp | exp TKN_MINUS exp | exp op_o exp | exp op_y exp| exp op_div exp| exp op_mod exp;
+
+op_o: TKN_OR;
+
+op_y: TKN_AND;
+
+op_div: TKN_DIV_INT;
+
+op_mod: TKN_MOD;
 
 operator: OPERATOR;
 
@@ -125,7 +133,7 @@ HAGA: H A G A;
 DE: D E;
 
 // operators
-OPERATOR: TKN_PLUS | TKN_TIMES | TKN_DIV | TKN_POWER | TKN_EQUAL | TKN_NEQ | TKN_LESS | TKN_LEQ | TKN_GREATER | TKN_GEQ | TKN_DIV_INT | TKN_MOD;
+OPERATOR: TKN_PLUS | TKN_TIMES | TKN_DIV | TKN_POWER | TKN_EQUAL | TKN_NEQ | TKN_LESS | TKN_LEQ | TKN_GREATER | TKN_GEQ;
 
 TKN_PLUS: '+';
 TKN_MINUS: '-';
@@ -138,8 +146,10 @@ TKN_LESS: '<';
 TKN_LEQ: '<=';
 TKN_GREATER: '>';
 TKN_GEQ: '>=';
-TKN_DIV_INT: D I V;
-TKN_MOD: M O D;
+TKN_DIV_INT: ' ' D I V ' ';
+TKN_MOD: ' ' M O D ' ';
+TKN_AND: ' ' Y ' ';
+TKN_OR: ' ' O ' ';
 
 
 // literals

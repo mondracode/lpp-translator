@@ -1,4 +1,4 @@
-// Generated from C:/Users/smggu/OneDrive/Documentos/github.com/mondracode/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
+// Generated from C:/Users/USUARIO/Documents/UN/Lenguajes/Traductor/grammar/lpp.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -138,8 +138,8 @@ public class lppParser extends Parser {
 		public Dec_funcionesContext dec_funciones() {
 			return getRuleContext(Dec_funcionesContext.class,0);
 		}
-		public ProgContext prog() {
-			return getRuleContext(ProgContext.class,0);
+		public Prog_mainContext prog_main() {
+			return getRuleContext(Prog_mainContext.class,0);
 		}
 		public SContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -152,6 +152,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitS(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitS(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -168,7 +173,7 @@ public class lppParser extends Parser {
 			setState(78);
 			dec_funciones();
 			setState(79);
-			prog();
+			prog_main();
 			}
 		}
 		catch (RecognitionException re) {
@@ -213,6 +218,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_registros(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_registros(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -278,6 +288,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_variables_globales(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_variables_globales(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Dec_variables_globalesContext dec_variables_globales() throws RecognitionException {
@@ -333,6 +348,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_variables(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_variables(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -393,6 +413,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_variable(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_variable(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -458,6 +483,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_variable_global(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_variable_global(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Dec_variable_globalContext dec_variable_global() throws RecognitionException {
@@ -514,6 +544,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_sig_variable(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_sig_variable(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Dec_sig_variableContext dec_sig_variable() throws RecognitionException {
@@ -564,6 +599,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_funciones(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_funciones(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -644,6 +684,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_funcion(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_funcion(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Dec_funcionContext dec_funcion() throws RecognitionException {
@@ -703,6 +748,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitParametros(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitParametros(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -772,6 +822,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitParametro_sig(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitParametro_sig(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Parametro_sigContext parametro_sig() throws RecognitionException {
@@ -815,6 +870,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_var(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_var(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -877,6 +937,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitDec_procedimiento(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitDec_procedimiento(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Dec_procedimientoContext dec_procedimiento() throws RecognitionException {
@@ -927,6 +992,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitProg(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitProg(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ProgContext prog() throws RecognitionException {
@@ -972,6 +1042,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitProg_main(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitProg_main(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1073,6 +1148,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitCmds(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitCmds(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1199,6 +1279,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitEscriba(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitEscriba(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final EscribaContext escriba() throws RecognitionException {
@@ -1241,6 +1326,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitLea(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitLea(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1287,6 +1377,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitLlamar(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitLlamar(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1356,6 +1451,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitSi(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitSi(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final SiContext si() throws RecognitionException {
@@ -1411,6 +1511,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitSino(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitSino(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1481,6 +1586,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitCaso(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitCaso(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1557,6 +1667,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitOpcion(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitOpcion(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final OpcionContext opcion() throws RecognitionException {
@@ -1602,6 +1717,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitCaso_sino(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitCaso_sino(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1651,6 +1771,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitRepita(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitRepita(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1711,6 +1836,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitPara(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitPara(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1779,6 +1909,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitMientras(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitMientras(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final MientrasContext mientras() throws RecognitionException {
@@ -1833,6 +1968,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitAsigne(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitAsigne(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final AsigneContext asigne() throws RecognitionException {
@@ -1877,6 +2017,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitRetorne(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitRetorne(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1938,6 +2083,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitExp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitExp(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2099,6 +2249,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitOperator(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitOperator(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final OperatorContext operator() throws RecognitionException {
@@ -2141,6 +2296,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitLiteral(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitLiteral(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2241,6 +2401,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitTipo(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitTipo(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final TipoContext tipo() throws RecognitionException {
@@ -2331,6 +2496,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitTipo_variable(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitTipo_variable(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Tipo_variableContext tipo_variable() throws RecognitionException {
@@ -2415,6 +2585,11 @@ public class lppParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitCadena(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitCadena(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final CadenaContext cadena() throws RecognitionException {
@@ -2465,6 +2640,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitArreglo(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitArreglo(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2520,6 +2700,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitArreglo_variable(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitArreglo_variable(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2577,6 +2762,11 @@ public class lppParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof lppListener ) ((lppListener)listener).exitExp_list(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof lppVisitor ) return ((lppVisitor<? extends T>)visitor).visitExp_list(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2713,43 +2903,43 @@ public class lppParser extends Parser {
 		"\u0000B\u014a\u0001\u0000\u0000\u0000D\u014c\u0001\u0000\u0000\u0000F"+
 		"\u0151\u0001\u0000\u0000\u0000H\u0158\u0001\u0000\u0000\u0000J\u015f\u0001"+
 		"\u0000\u0000\u0000LM\u0003\u0002\u0001\u0000MN\u0003\u0004\u0002\u0000"+
-		"NO\u0003\u000e\u0007\u0000OP\u0003\u001a\r\u0000P\u0001\u0001\u0000\u0000"+
-		"\u0000QR\u0005\u000b\u0000\u0000RS\u0005:\u0000\u0000ST\u0003\u0006\u0003"+
-		"\u0000TU\u0005\f\u0000\u0000UV\u0005\u000b\u0000\u0000VX\u0001\u0000\u0000"+
-		"\u0000WQ\u0001\u0000\u0000\u0000X[\u0001\u0000\u0000\u0000YW\u0001\u0000"+
-		"\u0000\u0000YZ\u0001\u0000\u0000\u0000Z\u0003\u0001\u0000\u0000\u0000"+
-		"[Y\u0001\u0000\u0000\u0000\\^\u0003\n\u0005\u0000]\\\u0001\u0000\u0000"+
-		"\u0000^a\u0001\u0000\u0000\u0000_]\u0001\u0000\u0000\u0000_`\u0001\u0000"+
-		"\u0000\u0000`\u0005\u0001\u0000\u0000\u0000a_\u0001\u0000\u0000\u0000"+
-		"bd\u0003\b\u0004\u0000cb\u0001\u0000\u0000\u0000dg\u0001\u0000\u0000\u0000"+
-		"ec\u0001\u0000\u0000\u0000ef\u0001\u0000\u0000\u0000f\u0007\u0001\u0000"+
-		"\u0000\u0000ge\u0001\u0000\u0000\u0000hi\u0003B!\u0000im\u0005:\u0000"+
-		"\u0000jl\u0003\f\u0006\u0000kj\u0001\u0000\u0000\u0000lo\u0001\u0000\u0000"+
-		"\u0000mk\u0001\u0000\u0000\u0000mn\u0001\u0000\u0000\u0000n\t\u0001\u0000"+
-		"\u0000\u0000om\u0001\u0000\u0000\u0000pq\u0003B!\u0000qu\u0005:\u0000"+
-		"\u0000rt\u0003\f\u0006\u0000sr\u0001\u0000\u0000\u0000tw\u0001\u0000\u0000"+
-		"\u0000us\u0001\u0000\u0000\u0000uv\u0001\u0000\u0000\u0000v\u000b\u0001"+
-		"\u0000\u0000\u0000wu\u0001\u0000\u0000\u0000xy\u0005\u0001\u0000\u0000"+
-		"yz\u0005:\u0000\u0000z\r\u0001\u0000\u0000\u0000{~\u0003\u0010\b\u0000"+
-		"|~\u0003\u0018\f\u0000}{\u0001\u0000\u0000\u0000}|\u0001\u0000\u0000\u0000"+
-		"~\u0081\u0001\u0000\u0000\u0000\u007f}\u0001\u0000\u0000\u0000\u007f\u0080"+
-		"\u0001\u0000\u0000\u0000\u0080\u000f\u0001\u0000\u0000\u0000\u0081\u007f"+
-		"\u0001\u0000\u0000\u0000\u0082\u0083\u0005\r\u0000\u0000\u0083\u0084\u0005"+
-		":\u0000\u0000\u0084\u0085\u0003\u0012\t\u0000\u0085\u0086\u0005\u0002"+
-		"\u0000\u0000\u0086\u0087\u0003@ \u0000\u0087\u0088\u0003\u0006\u0003\u0000"+
-		"\u0088\u0089\u0003\u001a\r\u0000\u0089\u0011\u0001\u0000\u0000\u0000\u008a"+
-		"\u008b\u0005\u0003\u0000\u0000\u008b\u008f\u0003\u0016\u000b\u0000\u008c"+
-		"\u008e\u0003\u0014\n\u0000\u008d\u008c\u0001\u0000\u0000\u0000\u008e\u0091"+
-		"\u0001\u0000\u0000\u0000\u008f\u008d\u0001\u0000\u0000\u0000\u008f\u0090"+
-		"\u0001\u0000\u0000\u0000\u0090\u0092\u0001\u0000\u0000\u0000\u0091\u008f"+
-		"\u0001\u0000\u0000\u0000\u0092\u0093\u0005\u0004\u0000\u0000\u0093\u0095"+
-		"\u0001\u0000\u0000\u0000\u0094\u008a\u0001\u0000\u0000\u0000\u0094\u0095"+
-		"\u0001\u0000\u0000\u0000\u0095\u0013\u0001\u0000\u0000\u0000\u0096\u0097"+
-		"\u0005\u0001\u0000\u0000\u0097\u0098\u0003\u0016\u000b\u0000\u0098\u0015"+
-		"\u0001\u0000\u0000\u0000\u0099\u009b\u0005\u000e\u0000\u0000\u009a\u0099"+
-		"\u0001\u0000\u0000\u0000\u009a\u009b\u0001\u0000\u0000\u0000\u009b\u009c"+
-		"\u0001\u0000\u0000\u0000\u009c\u009d\u0003@ \u0000\u009d\u009e\u0005:"+
-		"\u0000\u0000\u009e\u0017\u0001\u0000\u0000\u0000\u009f\u00a0\u0005\u000f"+
+		"NO\u0003\u000e\u0007\u0000OP\u0003\u001c\u000e\u0000P\u0001\u0001\u0000"+
+		"\u0000\u0000QR\u0005\u000b\u0000\u0000RS\u0005:\u0000\u0000ST\u0003\u0006"+
+		"\u0003\u0000TU\u0005\f\u0000\u0000UV\u0005\u000b\u0000\u0000VX\u0001\u0000"+
+		"\u0000\u0000WQ\u0001\u0000\u0000\u0000X[\u0001\u0000\u0000\u0000YW\u0001"+
+		"\u0000\u0000\u0000YZ\u0001\u0000\u0000\u0000Z\u0003\u0001\u0000\u0000"+
+		"\u0000[Y\u0001\u0000\u0000\u0000\\^\u0003\n\u0005\u0000]\\\u0001\u0000"+
+		"\u0000\u0000^a\u0001\u0000\u0000\u0000_]\u0001\u0000\u0000\u0000_`\u0001"+
+		"\u0000\u0000\u0000`\u0005\u0001\u0000\u0000\u0000a_\u0001\u0000\u0000"+
+		"\u0000bd\u0003\b\u0004\u0000cb\u0001\u0000\u0000\u0000dg\u0001\u0000\u0000"+
+		"\u0000ec\u0001\u0000\u0000\u0000ef\u0001\u0000\u0000\u0000f\u0007\u0001"+
+		"\u0000\u0000\u0000ge\u0001\u0000\u0000\u0000hi\u0003B!\u0000im\u0005:"+
+		"\u0000\u0000jl\u0003\f\u0006\u0000kj\u0001\u0000\u0000\u0000lo\u0001\u0000"+
+		"\u0000\u0000mk\u0001\u0000\u0000\u0000mn\u0001\u0000\u0000\u0000n\t\u0001"+
+		"\u0000\u0000\u0000om\u0001\u0000\u0000\u0000pq\u0003B!\u0000qu\u0005:"+
+		"\u0000\u0000rt\u0003\f\u0006\u0000sr\u0001\u0000\u0000\u0000tw\u0001\u0000"+
+		"\u0000\u0000us\u0001\u0000\u0000\u0000uv\u0001\u0000\u0000\u0000v\u000b"+
+		"\u0001\u0000\u0000\u0000wu\u0001\u0000\u0000\u0000xy\u0005\u0001\u0000"+
+		"\u0000yz\u0005:\u0000\u0000z\r\u0001\u0000\u0000\u0000{~\u0003\u0010\b"+
+		"\u0000|~\u0003\u0018\f\u0000}{\u0001\u0000\u0000\u0000}|\u0001\u0000\u0000"+
+		"\u0000~\u0081\u0001\u0000\u0000\u0000\u007f}\u0001\u0000\u0000\u0000\u007f"+
+		"\u0080\u0001\u0000\u0000\u0000\u0080\u000f\u0001\u0000\u0000\u0000\u0081"+
+		"\u007f\u0001\u0000\u0000\u0000\u0082\u0083\u0005\r\u0000\u0000\u0083\u0084"+
+		"\u0005:\u0000\u0000\u0084\u0085\u0003\u0012\t\u0000\u0085\u0086\u0005"+
+		"\u0002\u0000\u0000\u0086\u0087\u0003@ \u0000\u0087\u0088\u0003\u0006\u0003"+
+		"\u0000\u0088\u0089\u0003\u001a\r\u0000\u0089\u0011\u0001\u0000\u0000\u0000"+
+		"\u008a\u008b\u0005\u0003\u0000\u0000\u008b\u008f\u0003\u0016\u000b\u0000"+
+		"\u008c\u008e\u0003\u0014\n\u0000\u008d\u008c\u0001\u0000\u0000\u0000\u008e"+
+		"\u0091\u0001\u0000\u0000\u0000\u008f\u008d\u0001\u0000\u0000\u0000\u008f"+
+		"\u0090\u0001\u0000\u0000\u0000\u0090\u0092\u0001\u0000\u0000\u0000\u0091"+
+		"\u008f\u0001\u0000\u0000\u0000\u0092\u0093\u0005\u0004\u0000\u0000\u0093"+
+		"\u0095\u0001\u0000\u0000\u0000\u0094\u008a\u0001\u0000\u0000\u0000\u0094"+
+		"\u0095\u0001\u0000\u0000\u0000\u0095\u0013\u0001\u0000\u0000\u0000\u0096"+
+		"\u0097\u0005\u0001\u0000\u0000\u0097\u0098\u0003\u0016\u000b\u0000\u0098"+
+		"\u0015\u0001\u0000\u0000\u0000\u0099\u009b\u0005\u000e\u0000\u0000\u009a"+
+		"\u0099\u0001\u0000\u0000\u0000\u009a\u009b\u0001\u0000\u0000\u0000\u009b"+
+		"\u009c\u0001\u0000\u0000\u0000\u009c\u009d\u0003@ \u0000\u009d\u009e\u0005"+
+		":\u0000\u0000\u009e\u0017\u0001\u0000\u0000\u0000\u009f\u00a0\u0005\u000f"+
 		"\u0000\u0000\u00a0\u00a1\u0005:\u0000\u0000\u00a1\u00a2\u0003\u0012\t"+
 		"\u0000\u00a2\u00a3\u0003\u0006\u0003\u0000\u00a3\u00a4\u0003\u001a\r\u0000"+
 		"\u00a4\u0019\u0001\u0000\u0000\u0000\u00a5\u00a6\u0005\u0010\u0000\u0000"+

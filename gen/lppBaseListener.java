@@ -292,6 +292,18 @@ public class lppBaseListener implements lppListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSi_aux(lppParser.Si_auxContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSi_aux(lppParser.Si_auxContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterSino(lppParser.SinoContext ctx) { }
 	/**
 	 * {@inheritDoc}

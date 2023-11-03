@@ -237,6 +237,16 @@ public interface lppListener extends ParseTreeListener {
 	 */
 	void exitSi(lppParser.SiContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link lppParser#si_aux}.
+	 * @param ctx the parse tree
+	 */
+	void enterSi_aux(lppParser.Si_auxContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#si_aux}.
+	 * @param ctx the parse tree
+	 */
+	void exitSi_aux(lppParser.Si_auxContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link lppParser#sino}.
 	 * @param ctx the parse tree
 	 */

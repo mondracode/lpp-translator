@@ -44,9 +44,11 @@ lea: LEA exp_list;
 
 llamar: LLAMAR ID ( TKN_OPENING_PAR exp_list TKN_CLOSING_PAR )?;
 
-si: SI exp ENTONCES cmds sino FIN SI;
+si: SI exp si_aux sino? FIN SI;
 
-sino: (SINO si | SINO cmds)?;
+si_aux: ENTONCES cmds;
+
+sino: SINO si | SINO cmds;
 
 caso: CASO ID (opcion)+ (caso_sino)? FIN CASO;
 

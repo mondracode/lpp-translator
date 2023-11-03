@@ -18,10 +18,14 @@ public class Main {
             ParseTree tree = parser.s(); // comienza el análisis en la regla inicial
             System.out.println(tree.toStringTree(parser)); // imprime el árbol en forma textual
 
+            LppToGoListener listener = new LppToGoListener();
 
             ParseTreeWalker walker = new ParseTreeWalker();
-            walker.walk(new LppToGoListener(), tree);
+            walker.walk(listener, tree);
             System.out.println();
+            System.out.println("-----------------------------------");
+
+            System.out.println(listener.translatedGo);
 
         } catch (Exception e){
             System.err.println("Error (Test): " + e);

@@ -1,6 +1,6 @@
 grammar lpp;
 
-s: dec_registros dec_variables_globales dec_funciones prog;
+s: dec_registros dec_variables_globales dec_funciones prog_main;
 
 dec_registros: (REGISTRO ID dec_variables FIN REGISTRO)*;
 

@@ -27,16 +27,6 @@ public interface lppListener extends ParseTreeListener {
 	 */
 	void exitDec_registros(lppParser.Dec_registrosContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link lppParser#dec_variables_globales}.
-	 * @param ctx the parse tree
-	 */
-	void enterDec_variables_globales(lppParser.Dec_variables_globalesContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link lppParser#dec_variables_globales}.
-	 * @param ctx the parse tree
-	 */
-	void exitDec_variables_globales(lppParser.Dec_variables_globalesContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link lppParser#dec_variables}.
 	 * @param ctx the parse tree
 	 */
@@ -47,6 +37,26 @@ public interface lppListener extends ParseTreeListener {
 	 */
 	void exitDec_variables(lppParser.Dec_variablesContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link lppParser#dec_variables_int}.
+	 * @param ctx the parse tree
+	 */
+	void enterDec_variables_int(lppParser.Dec_variables_intContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#dec_variables_int}.
+	 * @param ctx the parse tree
+	 */
+	void exitDec_variables_int(lppParser.Dec_variables_intContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link lppParser#dec_variable_int}.
+	 * @param ctx the parse tree
+	 */
+	void enterDec_variable_int(lppParser.Dec_variable_intContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#dec_variable_int}.
+	 * @param ctx the parse tree
+	 */
+	void exitDec_variable_int(lppParser.Dec_variable_intContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link lppParser#dec_variable}.
 	 * @param ctx the parse tree
 	 */
@@ -56,16 +66,6 @@ public interface lppListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDec_variable(lppParser.Dec_variableContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link lppParser#dec_variable_global}.
-	 * @param ctx the parse tree
-	 */
-	void enterDec_variable_global(lppParser.Dec_variable_globalContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link lppParser#dec_variable_global}.
-	 * @param ctx the parse tree
-	 */
-	void exitDec_variable_global(lppParser.Dec_variable_globalContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link lppParser#dec_sig_variable}.
 	 * @param ctx the parse tree
@@ -136,6 +136,36 @@ public interface lppListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDec_procedimiento(lppParser.Dec_procedimientoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link lppParser#parametros_proc}.
+	 * @param ctx the parse tree
+	 */
+	void enterParametros_proc(lppParser.Parametros_procContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#parametros_proc}.
+	 * @param ctx the parse tree
+	 */
+	void exitParametros_proc(lppParser.Parametros_procContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link lppParser#parametro_sig_proc}.
+	 * @param ctx the parse tree
+	 */
+	void enterParametro_sig_proc(lppParser.Parametro_sig_procContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#parametro_sig_proc}.
+	 * @param ctx the parse tree
+	 */
+	void exitParametro_sig_proc(lppParser.Parametro_sig_procContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link lppParser#prog_proc}.
+	 * @param ctx the parse tree
+	 */
+	void enterProg_proc(lppParser.Prog_procContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#prog_proc}.
+	 * @param ctx the parse tree
+	 */
+	void exitProg_proc(lppParser.Prog_procContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link lppParser#prog}.
 	 * @param ctx the parse tree

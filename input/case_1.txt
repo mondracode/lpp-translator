@@ -22,6 +22,12 @@ funcion exponenciacion(entero base,entero exponente): entero
 		retorne base^exponente
 	fin
 
+procedimiento suma(entero n1,entero n2)
+	entero resultado
+	inicio
+		resultado<-n1+n2
+		escriba ("El resultado de la suma es: "),(resultado)
+	fin
 
 Inicio
 

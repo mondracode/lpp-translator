@@ -3,6 +3,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class LppToGoListener extends lppBaseListener{
@@ -46,7 +47,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterDec_registros(lppParser.Dec_registrosContext ctx) {
-        String registroId = String.valueOf(ctx.ID().getFirst());
+        String registroId = String.valueOf(ctx.ID().get(0));
         System.out.print("type " + capitalize(registroId) + " struct {\n");
         //translatedGo.append(registro);
     }
@@ -123,14 +124,15 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterAsigne(lppParser.AsigneContext ctx) {
-        System.out.print(ctx.exp().getFirst().getText().toLowerCase() + " = ");
+        System.out.print(ctx.exp().get(0).getText().toLowerCase() + " = ");
     }
 
     @Override
     public void exitAsigne(lppParser.AsigneContext ctx) {
-        String exp = ctx.exp().getLast().getText();
+        String exp = ctx.exp().get(1).getText();
 
-        if (ctx.exp().getLast().ID() != null) {
+
+        if(ctx.exp().get(1).ID() != null) {
             exp = exp.toLowerCase();
         }
 
@@ -167,7 +169,7 @@ public class LppToGoListener extends lppBaseListener{
             System.out.print(exp + ", ");
         }
 
-        System.out.print(ctx.exp().getLast().getText());
+        System.out.print(ctx.exp().get(ctx.exp().size() - 1).getText());
     }
 
     @Override

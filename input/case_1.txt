@@ -109,5 +109,6 @@ repita
  		Llamar nueva_linea
  	Fin para
 
+    lea n1,n2
 
 FIN

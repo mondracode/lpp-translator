@@ -209,6 +209,20 @@ public class LppToGoListener extends lppBaseListener{
     public void exitEscriba(lppParser.EscribaContext ctx) {
         System.out.print(")\n");
     }
+
+    @Override
+    public void enterLea(lppParser.LeaContext ctx) {
+        requiredLibs.add("bufio");
+        System.out.print("\nreader := bufio.NewReader(os.Stdin)\n");
+    }
+
+    @Override
+    public void exitLea(lppParser.LeaContext ctx) {
+        ctx.exp_list().exp().forEach(e -> {
+            System.out.print(e.getText() + ", _ = reader.ReadString('\\n')\n");
+        });
+
+    }
     @Override
     public void enterRetorne(lppParser.RetorneContext ctx) {
         System.out.println("return " + ctx.exp().getText());

@@ -131,11 +131,31 @@ public class LppToGoListener extends lppBaseListener{
     public void exitAsigne(lppParser.AsigneContext ctx) {
         String exp = ctx.exp().get(1).getText();
 
+
         if(ctx.exp().get(1).ID() != null) {
             exp = exp.toLowerCase();
         }
 
-        System.out.println(exp.replace("<>", "!="));
+        Map<String, String> operadorReemplazo = new HashMap<>();
+        operadorReemplazo.put("<>", "!=");
+        operadorReemplazo.put("+", "+");
+        operadorReemplazo.put("-", "-");
+        operadorReemplazo.put("*", "*");
+        operadorReemplazo.put("/", "/");
+        operadorReemplazo.put("^", "^");
+        operadorReemplazo.put("=", "=");
+        operadorReemplazo.put("<", "<");
+        operadorReemplazo.put("<=", "<=");
+        operadorReemplazo.put(">", ">");
+        operadorReemplazo.put(">=", ">=");
+        operadorReemplazo.put("DIV", "/");
+        operadorReemplazo.put("MOD", "%");
+
+        for (Map.Entry<String, String> entry : operadorReemplazo.entrySet()) {
+            exp = exp.replace(entry.getKey(), entry.getValue());
+        }
+
+        System.out.println(exp);
     }
 
     @Override

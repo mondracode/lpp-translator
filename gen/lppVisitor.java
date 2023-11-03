@@ -1,4 +1,4 @@
-// Generated from C:/Users/itrmi/Documents/camilo_andres_gonzalez_castro/git_repositories/lpp-translator/grammar/lpp.g4 by ANTLR 4.13.1
+// Generated from C:/Users/USUARIO/Documents/UN/Lenguajes/Traductor/grammar/lpp.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -22,6 +22,12 @@ public interface lppVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDec_registros(lppParser.Dec_registrosContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link lppParser#dec_variables_globales}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDec_variables_globales(lppParser.Dec_variables_globalesContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link lppParser#dec_variables}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -33,6 +39,18 @@ public interface lppVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitDec_variable(lppParser.Dec_variableContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link lppParser#dec_variable_global}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDec_variable_global(lppParser.Dec_variable_globalContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link lppParser#dec_sig_variable}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDec_sig_variable(lppParser.Dec_sig_variableContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link lppParser#dec_funciones}.
 	 * @param ctx the parse tree
@@ -52,6 +70,12 @@ public interface lppVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParametros(lppParser.ParametrosContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link lppParser#parametro_sig}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParametro_sig(lppParser.Parametro_sigContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link lppParser#dec_var}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -69,6 +93,12 @@ public interface lppVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitProg(lppParser.ProgContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link lppParser#prog_main}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProg_main(lppParser.Prog_mainContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link lppParser#cmds}.
 	 * @param ctx the parse tree
@@ -160,6 +190,12 @@ public interface lppVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExp(lppParser.ExpContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link lppParser#operator}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOperator(lppParser.OperatorContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link lppParser#literal}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -172,6 +208,12 @@ public interface lppVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTipo(lppParser.TipoContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link lppParser#tipo_variable}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTipo_variable(lppParser.Tipo_variableContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link lppParser#cadena}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -183,6 +225,12 @@ public interface lppVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitArreglo(lppParser.ArregloContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link lppParser#arreglo_variable}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArreglo_variable(lppParser.Arreglo_variableContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link lppParser#exp_list}.
 	 * @param ctx the parse tree

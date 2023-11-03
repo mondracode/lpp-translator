@@ -1,8 +1,11 @@
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LppToGoListener extends lppBaseListener{
+
+    private ArrayList<String> requiredLibs = new ArrayList<>();
 
     private String capitalize(String str) {
         return str.substring(0, 1).toUpperCase() + str.substring(1);
@@ -57,12 +60,12 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterDec_variable(lppParser.Dec_variableContext ctx) {
-        System.out.print(ctx.ID().getText() + " ");
+        System.out.print(ctx.ID().getText().toLowerCase() + " ");
     }
 
     @Override
     public void enterDec_variable_global(lppParser.Dec_variable_globalContext ctx) {
-        System.out.print("var " + ctx.ID().getText() + " ");
+        System.out.print("var " + ctx.ID().getText().toLowerCase() + " ");
     }
 
     @Override
@@ -73,7 +76,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterDec_sig_variable(lppParser.Dec_sig_variableContext ctx) {
-        System.out.print(", " + ctx.ID().getText() + " ");
+        System.out.print(", " + ctx.ID().getText().toLowerCase() + " ");
     }
 
     @Override
@@ -120,24 +123,32 @@ public class LppToGoListener extends lppBaseListener{
     }
 
     @Override
-    public void exitDec_funcion(lppParser.Dec_funcionContext ctx) {
-        String funcionId = ctx.ID().getText();
-        //translatedGo.append("function ").append(funcionId).append("() {\n");
-        // Aquí puedes agregar el código para traducir el interior de la función
-        // No olvides cerrar la función con '}' al final
-        //translatedGo.append("}\n");
+    public void enterAsigne(lppParser.AsigneContext ctx) {
+        System.out.print(ctx.exp().getFirst().getText().toLowerCase() + " = ");
     }
 
     @Override
     public void exitAsigne(lppParser.AsigneContext ctx) {
-        // String variable = ctx.ID().getText();
-        // String valor = ctx.exp().getText();
-        // translatedJavaScript.append(variable).append(" = ").append(valor).append(";\n");
+        System.out.println();
     }
 
     @Override
-    public void exitEscriba(lppParser.EscribaContext ctx) {
-        //String expresion = ctx.exp_list().getText();
-        //translatedJavaScript.append("console.log(").append(expresion).append(");\n");
+    public void enterLiteral(lppParser.LiteralContext ctx) {
+        String literal = ctx.getText();
+        switch (literal) {
+            case "Verdadero":
+                System.out.print("true");
+                break;
+            case "Falso":
+                System.out.print("false");
+                break;
+            default:
+                System.out.print(literal);
+        }
+    }
+
+    public void enterEscriba(lppParser.EscribaContext ctx) {
+        requiredLibs.add("fmt");
+        System.out.print("fmt.Print(");
     }
 }

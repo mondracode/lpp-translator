@@ -352,7 +352,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterMientras(lppParser.MientrasContext ctx) {
-        System.out.print("\nfor " + ctx.exp().getText() + " {\n");
+        System.out.print("\nfor " + convertOperators(ctx.exp().getText()) + " {\n");
     }
 
     @Override
@@ -363,5 +363,15 @@ public class LppToGoListener extends lppBaseListener{
     @Override
     public void enterLlamar(lppParser.LlamarContext ctx) {
         System.out.print(ctx.ID() + "()\n");
+    }
+
+    @Override
+    public void enterRepita(lppParser.RepitaContext ctx) {
+        System.out.print("for ok := true; ok; ok = " + convertOperators(ctx.exp().getText()) + " {\n");
+    }
+
+    @Override
+    public void exitRepita(lppParser.RepitaContext ctx) {
+        System.out.print("}\n\n");
     }
 }

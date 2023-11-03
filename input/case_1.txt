@@ -94,6 +94,12 @@ si numero=100 entonces
     	 i<-i+1
     	fin mientras
 
+repita
+ escriba ("Valor del acumulador en la iteracion: "),(acumulador)
+		llamar nueva_linea
+		i<-i+1
+		acumulador<-acumulador+(i*2)
+ hasta (i=20) o (acumulador mod 5=4)
 
 
 FIN

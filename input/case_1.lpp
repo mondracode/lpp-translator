@@ -16,6 +16,7 @@ Booleano boolean
 Caracter char
 cadena[10] string
 Estudiante student
+entero n1, n2, numero, resultado, i, acumulador
 
 entero resultado
 funcion exponenciacion(entero base,entero exponente): entero
@@ -42,6 +43,7 @@ striNg <- "Hola mundo"
 other_integer <- mY_integer.field
 operation <- 56 <> 99
 test <- 5 div 3 mod 8
+numero <- 123
 
 student.nomBre <- "Reinaldo Felipe"
 nombrecito <- student.Nombre
@@ -63,7 +65,7 @@ caso variable
   5:
   	escriba("Es el número 5")
   sino:
-  	escriba("No sé qué número es modo:/")
+  	escriba("No sé qué número es, ni modo :/")
 
 fin caso
 

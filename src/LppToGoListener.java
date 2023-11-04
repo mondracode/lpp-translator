@@ -242,7 +242,7 @@ public class LppToGoListener extends lppBaseListener{
     @Override
     public void enterEscriba(lppParser.EscribaContext ctx) {
         insertRequiredLibrary("fmt");
-        String enterEscribaTranslated = "\nfmt.Print(";
+        String enterEscribaTranslated = "fmt.Print(";
         System.out.print(enterEscribaTranslated);
         translatedGo.append(enterEscribaTranslated);
     }
@@ -282,7 +282,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterDec_funcion(lppParser.Dec_funcionContext ctx) {
-        String enterDec_funcionTranslated = "\nfunc " + ctx.ID().getText();
+        String enterDec_funcionTranslated = "\n\nfunc " + ctx.ID().getText();
         System.out.print("func " + ctx.ID().getText());
         translatedGo.append(enterDec_funcionTranslated);
     }
@@ -319,7 +319,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterDec_procedimiento(lppParser.Dec_procedimientoContext ctx) {
-        String enterDec_procedimientoTranslated = "\nfunc " + ctx.ID().getText();
+        String enterDec_procedimientoTranslated = "\n\nfunc " + ctx.ID().getText();
         System.out.print(enterDec_procedimientoTranslated);
         translatedGo.append(enterDec_procedimientoTranslated);
     }
@@ -368,8 +368,8 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void exitCaso(lppParser.CasoContext ctx) {
-        System.out.print("}\n");
-        translatedGo.append("}\n");
+        System.out.print("}\n\n");
+        translatedGo.append("}\n\n");
     }
 
     @Override
@@ -391,8 +391,8 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void exitOpcion_exp(lppParser.Opcion_expContext ctx) {
-        System.out.print(":");
-        translatedGo.append(":");
+        System.out.print(":\n");
+        translatedGo.append(":\n");
     }
 
     @Override
@@ -401,6 +401,13 @@ public class LppToGoListener extends lppBaseListener{
         System.out.print(enterSiTranslated);
         translatedGo.append(enterSiTranslated);
     }
+
+    @Override
+    public void exitSi(lppParser.SiContext ctx) {
+        System.out.println("\n");
+        translatedGo.append("\n\n");
+    }
+
 
     @Override
     public void exitSi_aux(lppParser.Si_auxContext ctx) {
@@ -414,8 +421,8 @@ public class LppToGoListener extends lppBaseListener{
         System.out.print(enterSinoTranslated);
 
         if(ctx.si() == null) {
-            System.out.print(" {");
-            enterSinoTranslated += " {";
+            System.out.print(" {\n");
+            enterSinoTranslated += " {\n";
         }
 
         translatedGo.append(enterSinoTranslated);
@@ -424,8 +431,8 @@ public class LppToGoListener extends lppBaseListener{
     @Override
     public void exitSino(lppParser.SinoContext ctx) {
         if(ctx.si() == null) {
-            System.out.print(" }\n");
-            translatedGo.append(" }\n");
+            System.out.print("}");
+            translatedGo.append("}");
         }
     }
 

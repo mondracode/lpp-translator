@@ -40,7 +40,9 @@ cmds: (escriba | lea | llamar | si | caso | repita | para | mientras | asigne | 
 
 escriba: ESCRIBA exp_list;
 
-lea: LEA exp_list;
+lea: LEA exp_lea;
+
+exp_lea: exp (TKN_COMMA exp)*;
 
 llamar: LLAMAR ID ( TKN_OPENING_PAR exp_list TKN_CLOSING_PAR )?;
 

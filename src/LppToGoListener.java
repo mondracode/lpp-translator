@@ -4,6 +4,11 @@ import static java.util.Map.entry;
 public class LppToGoListener extends lppBaseListener{
 
     public StringBuilder codeHeader = new StringBuilder().append("package main\n\n");
+
+    private void insertRequiredLibrary(String lib) {
+        if (codeHeader.indexOf("import \"" + lib + "\"\n") == -1) codeHeader.append("import \"").append(lib).append("\"\n");
+    }
+
     private HashSet<String> globalVariables = new HashSet<>();
 
     private final Map<String, String> operatorCorrespondence = Map.ofEntries(
@@ -173,7 +178,7 @@ public class LppToGoListener extends lppBaseListener{
         enterAsigneTranslated += ctx.exp().get(0).getText().toLowerCase() + " = ";
 
         if(expText.contains(".") || ctx.exp().get(1).ID() == null){
-            rightHand = convertOperators(ctx.exp().get(1).getText());
+            rightHand = convertOperators(ctx.exp().get(1).getText().toLowerCase());
         } else {
             rightHand = convertOperators(ctx.exp().get(1).ID().getText());
         }
@@ -233,7 +238,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterEscriba(lppParser.EscribaContext ctx) {
-        if (codeHeader.indexOf("import \"fmt\"\n") == -1) codeHeader.append("import \"fmt\"\n");
+        insertRequiredLibrary("fmt");
         String enterEscribaTranslated = "\nfmt.Print(";
         System.out.print(enterEscribaTranslated);
         translatedGo.append(enterEscribaTranslated);
@@ -247,7 +252,9 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterLea(lppParser.LeaContext ctx) {
-        if (codeHeader.indexOf("import \"bufio\"\n") == -1) codeHeader.append("import \"bufio\"\n");
+        insertRequiredLibrary("bufio");
+        insertRequiredLibrary("os");
+
         String enterLeaTranslated = "\nreader := bufio.NewReader(os.Stdin)\n";
         System.out.print(enterLeaTranslated);
         translatedGo.append(enterLeaTranslated);
@@ -256,7 +263,7 @@ public class LppToGoListener extends lppBaseListener{
     @Override
     public void exitLea(lppParser.LeaContext ctx) {
         StringBuilder exitLeaTranslated = new StringBuilder();
-        ctx.exp_list().exp().forEach(e -> {
+        ctx.exp_lea().exp().forEach(e -> {
             exitLeaTranslated.append(e.getText()).append(", _ = reader.ReadString('\\n')\n");
             System.out.print(e.getText() + ", _ = reader.ReadString('\\n')\n");
         });

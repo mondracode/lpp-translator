@@ -71,8 +71,6 @@ public class LppToGoListener extends lppBaseListener{
                 .replaceAll("(?<![a-zA-Z])y(?![a-zA-Z])", " y ")
                 .replaceAll("(?<![a-zA-Z])o(?![a-zA-Z])", " o ");
 
-        System.out.println("%%%%%%%%" + rawExp);
-
         List<Map.Entry<String, String>> toSort = new ArrayList<>(operatorCorrespondence.entrySet());
         toSort.sort(Map.Entry.<String, String>comparingByKey().reversed());
         for (Map.Entry<String, String> entry : toSort) {

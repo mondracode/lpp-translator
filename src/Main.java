@@ -25,6 +25,7 @@ public class Main {
             System.out.println();
             System.out.println("-----------------------------------");
 
+            listener.translatedGo.insert(0, listener.codeHeader);
             System.out.println(listener.translatedGo);
 
         } catch (Exception e){

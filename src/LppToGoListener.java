@@ -3,7 +3,7 @@ import static java.util.Map.entry;
 
 public class LppToGoListener extends lppBaseListener{
 
-    private HashSet<String> requiredLibs = new HashSet<>();
+    public StringBuilder codeHeader = new StringBuilder().append("package main\n\n");
     private HashSet<String> globalVariables = new HashSet<>();
 
     private final Map<String, String> operatorCorrespondence = Map.ofEntries(
@@ -233,7 +233,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterEscriba(lppParser.EscribaContext ctx) {
-        requiredLibs.add("fmt");
+        if (codeHeader.indexOf("import \"fmt\"\n") == -1) codeHeader.append("import \"fmt\"\n");
         String enterEscribaTranslated = "\nfmt.Print(";
         System.out.print(enterEscribaTranslated);
         translatedGo.append(enterEscribaTranslated);
@@ -247,7 +247,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterLea(lppParser.LeaContext ctx) {
-        requiredLibs.add("bufio");
+        if (codeHeader.indexOf("import \"bufio\"\n") == -1) codeHeader.append("import \"bufio\"\n");
         String enterLeaTranslated = "\nreader := bufio.NewReader(os.Stdin)\n";
         System.out.print(enterLeaTranslated);
         translatedGo.append(enterLeaTranslated);
@@ -436,12 +436,12 @@ public class LppToGoListener extends lppBaseListener{
     public void enterLlamar(lppParser.LlamarContext ctx) {
         String enterLlamarTranslated;
         if(ctx.ID().getText().equals("nueva_linea")) {
-            requiredLibs.add("fmt");
-            System.out.print("fmt.Println()\n");
+            if (codeHeader.indexOf("import \"fmt\"\n") == -1) codeHeader.append("import \"fmt\"\n");
             enterLlamarTranslated = "fmt.Println()\n";
+            System.out.print(enterLlamarTranslated);
         } else {
-            System.out.print(ctx.ID() + "()\n");
             enterLlamarTranslated = ctx.ID() + "()\n";
+            System.out.print(enterLlamarTranslated);
         }
 
         translatedGo.append(enterLlamarTranslated);

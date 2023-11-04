@@ -1,5 +1,4 @@
 import java.util.*;
-
 import static java.util.Map.entry;
 
 public class LppToGoListener extends lppBaseListener{
@@ -24,7 +23,6 @@ public class LppToGoListener extends lppBaseListener{
         entry(" y ", " && "),
         entry(" o ", " || ")
     );
-
 
     private String capitalize(String str) {
         return str.substring(0, 1).toUpperCase() + str.substring(1);
@@ -59,10 +57,11 @@ public class LppToGoListener extends lppBaseListener{
     }
 
     private String convertOperators(String rawExp) {
-        for (Map.Entry<String, String> entry : operatorCorrespondence.entrySet()) {
+        List<Map.Entry<String, String>> toSort = new ArrayList<>(operatorCorrespondence.entrySet());
+        toSort.sort(Map.Entry.<String, String>comparingByKey().reversed());
+        for (Map.Entry<String, String> entry : toSort) {
             rawExp = rawExp.replace(entry.getKey(), entry.getValue());
         }
-
         return rawExp;
     }
 

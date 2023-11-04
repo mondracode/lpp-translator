@@ -65,6 +65,14 @@ public class LppToGoListener extends lppBaseListener{
     }
 
     private String convertOperators(String rawExp) {
+        rawExp = rawExp
+                .replaceAll("(?<![a-zA-Z])div(?![a-zA-Z])", " div ")
+                .replaceAll("(?<![a-zA-Z])mod(?![a-zA-Z])", " mod ")
+                .replaceAll("(?<![a-zA-Z])y(?![a-zA-Z])", " y ")
+                .replaceAll("(?<![a-zA-Z])o(?![a-zA-Z])", " o ");
+
+        System.out.println("%%%%%%%%" + rawExp);
+
         List<Map.Entry<String, String>> toSort = new ArrayList<>(operatorCorrespondence.entrySet());
         toSort.sort(Map.Entry.<String, String>comparingByKey().reversed());
         for (Map.Entry<String, String> entry : toSort) {

@@ -69,7 +69,7 @@ caso variable
 
 fin caso
 
-si (5^2 = 25) y (25 mod 5 = 0) o (5 * 2 <> 12) entonces
+si (5^2 = 25)y(25 mod 5 = 0) o (5 * 2 <> 12) entonces
     // Comentario corto
 
     /* Comentario

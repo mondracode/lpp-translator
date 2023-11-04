@@ -7,10 +7,10 @@ public class Main {
         try{
             // crear un analizador léxico
             lppLexer lexer;
-            if (args.length>0)
-                lexer = new lppLexer(CharStreams.fromFileName(args[0]));
+            if (args.length==0)
+                lexer = new lppLexer(CharStreams.fromFileName("input/case_1.lpp"));
             else
-                lexer = new lppLexer(CharStreams.fromStream(System.in));
+                lexer = new lppLexer(CharStreams.fromFileName(args[0]));
             // Identificar al analizador léxico como fuente de tokens para el sintactico
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             // Crear el analizador sintáctico que se alimenta a partir del buffer de tokens
@@ -25,7 +25,7 @@ public class Main {
             System.out.println();
             System.out.println("-----------------------------------");
 
-            listener.translatedGo.insert(0, listener.codeHeader);
+            listener.translatedGo.insert(0, listener.codeHeader + "\n");
             System.out.println(listener.translatedGo);
 
         } catch (Exception e){

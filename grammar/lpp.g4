@@ -84,9 +84,9 @@ operator: OPERATOR;
 
 literal: CHAR_LITERAL | CADENA_LITERAL | REAL_LITERAL | ENTERO_LITERAL | TKN_MINUS REAL_LITERAL | TKN_MINUS ENTERO_LITERAL | BOOLEANO_LITERAL;
 
-tipo: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo;
+tipo: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo | ID;
 
-tipo_variable: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo_variable;
+tipo_variable: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo_variable | ID;
 
 cadena: CADENA TKN_OPENING_BRA ENTERO_LITERAL TKN_CLOSING_BRA;
 

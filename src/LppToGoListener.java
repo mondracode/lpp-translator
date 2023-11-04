@@ -20,9 +20,9 @@ public class LppToGoListener extends lppBaseListener{
         entry("^", "^"),
         entry("=", "=="),
         entry("<", "<"),
-        entry("<=", "<="),
+        entry("<==", "<="),
         entry(">", ">"),
-        entry(">=", ">="),
+        entry(">==", ">="),
         entry(" div ", " / "),
         entry(" mod ", " % "),
         entry(" y ", " && "),
@@ -40,22 +40,25 @@ public class LppToGoListener extends lppBaseListener{
         if(variableTipo.contains("cadena")) {
             result.append("string");
         }
-        switch (variableTipo) {
-            case "entero":
-                result.append("int");
-                break;
-            case "real":
-                result.append("float32");
-                break;
-            case "booleano":
-                result.append("bool");
-                break;
-            case "caracter":
-                result.append("rune");
-                break;
-            case "cadena":
-                result.append("string");
-                break;
+
+        if(!variableTipo.toLowerCase().contains("arreglo") && !variableTipo.toLowerCase().contains("cadena")) {
+            switch (variableTipo) {
+                case "entero":
+                    result.append("int");
+                    break;
+                case "real":
+                    result.append("float32");
+                    break;
+                case "booleano":
+                    result.append("bool");
+                    break;
+                case "caracter":
+                    result.append("rune");
+                    break;
+                default:
+                    result.append(capitalize(variableTipo));
+                    break;
+            }
         }
 
         return result.toString();
@@ -401,8 +404,8 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void exitSi_aux(lppParser.Si_auxContext ctx) {
-        System.out.print("} \n");
-        translatedGo.append("} \n");
+        System.out.print("}");
+        translatedGo.append("}");
     }
 
     @Override

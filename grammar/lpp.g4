@@ -150,7 +150,7 @@ TKN_LESS: '<';
 TKN_LEQ: '<=';
 TKN_GREATER: '>';
 TKN_GEQ: '>=';
-TKN_DIV_INT: D I V;
+TKN_DIV_INT: ' ' D I V ' ' | {_input.LA(-1) == ')' || _input.LA(-1) == ']'}?D I V | ' ' D I V;
 TKN_MOD: ' ' M O D ' ' | {_input.LA(-1) == ')' || _input.LA(-1) == ']'}?M O D | ' ' M O D;
 TKN_AND: ' ' Y ' ' | {_input.LA(-1) == ')' || _input.LA(-1) == ']'}?Y;
 TKN_OR: ' ' O ' ' | {_input.LA(-1) == ')' || _input.LA(-1) == ']'}?O;

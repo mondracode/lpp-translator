@@ -47,11 +47,13 @@ operation <- acumulamodor mod vara
 test <- 5 div 3 mod 8
 numero <- 123
 
+condicion <- 23 <> numero
+
 student.nomBre <- "Reinaldo Felipe"
 nombrecito <- student.Nombre
 
 // imprimimos los valores en consola y separados por un espacio
-escriba my_integer," ",7.7, -5, the_real_one," ",Boolean," ",char," ",string
+escriba my_integer," ",7.7, -5, the_real_one," ",Boolean," ",char," ",string,FalSo
 escriba 88 <> 33
 
 Escriba I
@@ -65,7 +67,7 @@ caso variable
   1,2,3:
   	escriba("Es un número entero entre 1 y 3")
   4:
-  	escriba("Es el número 4")
+  	escriba("Lo verdadero es que es el número 4")
   5:
   	escriba("Es el número 5")
   sino:
@@ -93,6 +95,12 @@ sino si numero>100 entonces
     sino
         escriba "El número es menor que 100"
     fin si
+fin si
+
+si (5^2 = 25)y(25 mod 5 = 0)o(add.field mod acumulador = 3) entonces
+
+    escriba "el 25 es poderoso"
+
 fin si
 
 mientras i<=10 haga

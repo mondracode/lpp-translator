@@ -39,12 +39,16 @@ public class LppToGoListener extends lppBaseListener{
         entry("=", "=="),
         entry("<", "<"),
         entry("<==", "<="),
+        entry("<=", "<="),
         entry(">", ">"),
         entry(">==", ">="),
+        entry(">=", ">="),
         entry(" div ", " / "),
         entry(" mod ", " % "),
         entry(" y ", " && "),
-        entry(" o ", " || ")
+        entry(" o ", " || "),
+        entry("verdadero", "true"),
+        entry("falso", "false")
     );
 
     private String capitalize(String str) {
@@ -94,9 +98,17 @@ public class LppToGoListener extends lppBaseListener{
             index++;
         }
 
+        rawExp = rawExp
+                .replaceAll("(?<![a-zA-Z])div(?![a-zA-Z])", " div ")
+                .replaceAll("(?<![a-zA-Z])mod(?![a-zA-Z])", " mod ")
+                .replaceAll("(?<![a-zA-Z])y(?![a-zA-Z])", " y ")
+                .replaceAll("(?<![a-zA-Z])o(?![a-zA-Z])", " o ");
+
         rawExp = rawExp.replaceAll("\"[^\"]*\"", "\"\"");
 
-        for (Map.Entry<String, String> entry : operatorCorrespondence.entrySet()) {
+        List<Map.Entry<String, String>> toSort = new ArrayList<>(operatorCorrespondence.entrySet());
+        toSort.sort(Map.Entry.<String, String>comparingByKey().reversed());
+        for (Map.Entry<String, String> entry : toSort) {
             rawExp = rawExp.replace(entry.getKey(), entry.getValue());
         }
 

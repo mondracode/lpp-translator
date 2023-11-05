@@ -54,6 +54,8 @@ nombrecito <- student.Nombre
 escriba my_integer," ",7.7, -5, the_real_one," ",Boolean," ",char," ",string
 escriba 88 <> 33
 
+Escriba I
+
 resultado <- exponenciacion(2,5)
 resultado <- exponenciacion(2,5, 3, 2)
 escriba "El resultado de la operacion es: ",resultado
@@ -84,7 +86,7 @@ si (5^2 = 25)y(25 mod 5 = 0)o(add.field mod acumulador = 3) entonces
 
 fin si
 
-si numero=100 entonces
+si nuMero=100 entonces
     escriba "El número es 100"
 sino si numero>100 entonces
     escriba "El número es mayor que 100"

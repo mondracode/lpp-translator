@@ -1,4 +1,7 @@
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static java.util.Map.entry;
 
 public class LppToGoListener extends lppBaseListener{
@@ -79,18 +82,28 @@ public class LppToGoListener extends lppBaseListener{
         return result.toString();
     }
 
-    private String convertOperators(String rawExp) {
-        rawExp = rawExp
-                .replaceAll("(?<![a-zA-Z])div(?![a-zA-Z])", " div ")
-                .replaceAll("(?<![a-zA-Z])mod(?![a-zA-Z])", " mod ")
-                .replaceAll("(?<![a-zA-Z])y(?![a-zA-Z])", " y ")
-                .replaceAll("(?<![a-zA-Z])o(?![a-zA-Z])", " o ");
+    public String convertOperators(String rawExp) {
+        Map<Integer, String> literals = new HashMap<>();
+        int index = 0;
+        Pattern pattern = Pattern.compile("\"[^\"]*\"");
+        Matcher matcher = pattern.matcher(rawExp);
 
-        List<Map.Entry<String, String>> toSort = new ArrayList<>(operatorCorrespondence.entrySet());
-        toSort.sort(Map.Entry.<String, String>comparingByKey().reversed());
-        for (Map.Entry<String, String> entry : toSort) {
+        while (matcher.find()) {
+            String literal = matcher.group();
+            literals.put(index, literal);
+            index++;
+        }
+
+        rawExp = rawExp.replaceAll("\"[^\"]*\"", "\"\"");
+
+        for (Map.Entry<String, String> entry : operatorCorrespondence.entrySet()) {
             rawExp = rawExp.replace(entry.getKey(), entry.getValue());
         }
+
+        for (Map.Entry<Integer, String> entry : literals.entrySet()) {
+            rawExp = rawExp.replaceFirst("\"\"", entry.getValue());
+        }
+
         return rawExp;
     }
 
@@ -261,8 +274,13 @@ public class LppToGoListener extends lppBaseListener{
         }
 
         if(!(lastElement.literal() != null && lastElement.literal().CADENA_LITERAL() != null)) {
-            System.out.print(convertOperators(lastElement.getText()));
-            enterExp_listTranslated.append(convertOperators(lastElement.getText()));
+            if(lastElement.ID() != null) {
+                System.out.print(lastElement.getText().toLowerCase());
+                enterExp_listTranslated.append(lastElement.getText().toLowerCase());
+            } else {
+                System.out.print(convertOperators(lastElement.getText()));
+                enterExp_listTranslated.append(convertOperators(lastElement.getText()));
+            }
         } else {
             System.out.print(lastElement.getText());
             enterExp_listTranslated.append(lastElement.getText());

@@ -224,10 +224,12 @@ public class LppToGoListener extends lppBaseListener{
 
         enterAsigneTranslated += ctx.exp().get(0).getText().toLowerCase() + " = ";
 
-        if(expText.contains(".") || ctx.exp().get(1).ID() == null){
+        if(expText.contains(".") || ctx.exp().get(1).ID() == null && !(ctx.exp().get(1).literal() != null && ctx.exp().get(1).literal().CADENA_LITERAL() != null)){
             rightHand = convertOperators(ctx.exp().get(1).getText().toLowerCase());
-        } else {
+        } else if (ctx.exp().get(1).ID() != null){
             rightHand = convertOperators(ctx.exp().get(1).ID().getText());
+        } else {
+            rightHand = convertOperators(ctx.exp().get(1).literal().getText());
         }
 
         enterAsigneTranslated += rightHand;

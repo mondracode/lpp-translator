@@ -2,11 +2,26 @@ import java.util.*;
 import static java.util.Map.entry;
 
 public class LppToGoListener extends lppBaseListener{
-
+    private int currentIndentLevel = 0;
     public StringBuilder codeHeader = new StringBuilder().append("package main\n\n");
+    public StringBuilder translatedGo = new StringBuilder();
 
     private void insertRequiredLibrary(String lib) {
         if (codeHeader.indexOf("import \"" + lib + "\"\n") == -1) codeHeader.append("import \"").append(lib).append("\"\n");
+    }
+
+    private void printCurrentIndent() {
+        for (int i = 0; i < currentIndentLevel; i++) {
+            translatedGo.append("\t");
+        }
+    }
+
+    private void increaseIndent() {
+        currentIndentLevel++;
+    }
+
+    private void decreaseIndent() {
+        currentIndentLevel--;
     }
 
     private HashSet<String> globalVariables = new HashSet<>();
@@ -79,27 +94,31 @@ public class LppToGoListener extends lppBaseListener{
         return rawExp;
     }
 
-    public StringBuilder translatedGo = new StringBuilder();
-
     @Override
     public void enterDec_registros(lppParser.Dec_registrosContext ctx) {
         String registroId = String.valueOf(ctx.ID().get(0));
         String enterDec_registrosTranslated = "type " + capitalize(registroId) + " struct {\n";
         System.out.print(enterDec_registrosTranslated);
+        printCurrentIndent();
         translatedGo.append(enterDec_registrosTranslated);
+        increaseIndent();
     }
 
     @Override
     public void exitDec_registros(lppParser.Dec_registrosContext ctx) {
         String exitDec_registrosTranslated = "}\n\n";
         System.out.print(exitDec_registrosTranslated);
+        decreaseIndent();
+        printCurrentIndent();
         translatedGo.append(exitDec_registrosTranslated);
+
     }
 
     @Override
     public void enterDec_variable_int(lppParser.Dec_variable_intContext ctx) {
         String enterDec_variable_intTranslated = ctx.ID().getText().toLowerCase() + " ";
         System.out.print(enterDec_variable_intTranslated);
+        printCurrentIndent();
         translatedGo.append(enterDec_variable_intTranslated);
     }
 
@@ -107,6 +126,7 @@ public class LppToGoListener extends lppBaseListener{
     public void enterDec_variable(lppParser.Dec_variableContext ctx) {
         String enterDec_variableTranslated = "var " + ctx.ID().getText().toLowerCase() + " ";
         System.out.print(enterDec_variableTranslated);
+        printCurrentIndent();
         translatedGo.append(enterDec_variableTranslated);
     }
 
@@ -131,7 +151,8 @@ public class LppToGoListener extends lppBaseListener{
         translatedGo.append(exitDec_variable_intTranslated);
     }
 
-    @Override public void enterTipo(lppParser.TipoContext ctx) {
+    @Override
+    public void enterTipo(lppParser.TipoContext ctx) {
         String variableTipo = ctx.getText();
 
         if(variableTipo.contains("cadena")) {
@@ -167,14 +188,18 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterProg_main(lppParser.Prog_mainContext ctx) {
-        String enterProg_mainTranslated = "\nfunc main(){\n";
+        String enterProg_mainTranslated = "\nfunc main() {\n";
         System.out.print(enterProg_mainTranslated);
+        printCurrentIndent();
         translatedGo.append(enterProg_mainTranslated);
+        increaseIndent();
     }
 
     @Override
     public void exitProg_main(lppParser.Prog_mainContext ctx) {
         System.out.print("\n}");
+        decreaseIndent();
+        printCurrentIndent();
         translatedGo.append("\n}");
     }
 
@@ -200,6 +225,7 @@ public class LppToGoListener extends lppBaseListener{
             enterAsigneTranslated += "(";
         }
 
+        printCurrentIndent();
         translatedGo.append(enterAsigneTranslated);
     }
 
@@ -250,6 +276,7 @@ public class LppToGoListener extends lppBaseListener{
         insertRequiredLibrary("fmt");
         String enterEscribaTranslated = "fmt.Print(";
         System.out.print(enterEscribaTranslated);
+        printCurrentIndent();
         translatedGo.append(enterEscribaTranslated);
     }
 
@@ -264,25 +291,28 @@ public class LppToGoListener extends lppBaseListener{
         insertRequiredLibrary("bufio");
         insertRequiredLibrary("os");
 
-        String enterLeaTranslated = "\nreader := bufio.NewReader(os.Stdin)\n";
-        System.out.print(enterLeaTranslated);
+        translatedGo.append("\n");
+        String enterLeaTranslated = "reader := bufio.NewReader(os.Stdin)\n";
+        System.out.print("\n" + enterLeaTranslated);
+        printCurrentIndent();
         translatedGo.append(enterLeaTranslated);
     }
 
     @Override
     public void exitLea(lppParser.LeaContext ctx) {
-        StringBuilder exitLeaTranslated = new StringBuilder();
         ctx.exp_lea().exp().forEach(e -> {
+            StringBuilder exitLeaTranslated = new StringBuilder();
             exitLeaTranslated.append(e.getText()).append(", _ = reader.ReadString('\\n')\n");
+            printCurrentIndent();
             System.out.print(e.getText() + ", _ = reader.ReadString('\\n')\n");
+            translatedGo.append(exitLeaTranslated);
         });
-
-        translatedGo.append(exitLeaTranslated);
     }
     @Override
     public void enterRetorne(lppParser.RetorneContext ctx) {
         String enterRetorneTranslated = "return " + ctx.exp().getText() + "\n";
         System.out.print(enterRetorneTranslated);
+        printCurrentIndent();
         translatedGo.append(enterRetorneTranslated);
     }
 
@@ -290,12 +320,15 @@ public class LppToGoListener extends lppBaseListener{
     public void enterDec_funcion(lppParser.Dec_funcionContext ctx) {
         String enterDec_funcionTranslated = "\n\nfunc " + ctx.ID().getText();
         System.out.print("func " + ctx.ID().getText());
+        printCurrentIndent();
         translatedGo.append(enterDec_funcionTranslated);
     }
 
     @Override
     public void exitDec_funcion(lppParser.Dec_funcionContext ctx) {
         System.out.print("}\n");
+        decreaseIndent();
+        printCurrentIndent();
         translatedGo.append("}\n");
     }
 
@@ -314,7 +347,9 @@ public class LppToGoListener extends lppBaseListener{
     @Override
     public void enterProg(lppParser.ProgContext ctx) {
         System.out.print(" {\n");
+        printCurrentIndent();
         translatedGo.append(" {\n");
+        increaseIndent();
     }
 
     @Override
@@ -327,12 +362,15 @@ public class LppToGoListener extends lppBaseListener{
     public void enterDec_procedimiento(lppParser.Dec_procedimientoContext ctx) {
         String enterDec_procedimientoTranslated = "\n\nfunc " + ctx.ID().getText();
         System.out.print(enterDec_procedimientoTranslated);
+        printCurrentIndent();
         translatedGo.append(enterDec_procedimientoTranslated);
     }
 
     @Override
     public void exitDec_procedimiento(lppParser.Dec_procedimientoContext ctx) {
         System.out.print("}\n");
+        decreaseIndent();
+        printCurrentIndent();
         translatedGo.append("}\n");
     }
 
@@ -351,7 +389,9 @@ public class LppToGoListener extends lppBaseListener{
     @Override
     public void exitParametros_proc(lppParser.Parametros_procContext ctx) {
         System.out.print(") {\n");
+        printCurrentIndent();
         translatedGo.append(") {\n");
+        increaseIndent();
     }
 
     @Override
@@ -362,37 +402,55 @@ public class LppToGoListener extends lppBaseListener{
 
         String enterDec_varTranslated = ctx.ID().getText() + " ";
         System.out.print(enterDec_varTranslated);
+        printCurrentIndent();
         translatedGo.append(enterDec_varTranslated);
     }
 
     @Override
     public void enterCaso(lppParser.CasoContext ctx) {
-        String enterCasoTranslated = "\nswitch " + ctx.ID().getText() + " {\n";
-        System.out.print(enterCasoTranslated);
+        translatedGo.append("\n");
+        String enterCasoTranslated = "switch " + ctx.ID().getText() + " {\n";
+        System.out.print("\n" + enterCasoTranslated);
+        printCurrentIndent();
         translatedGo.append(enterCasoTranslated);
+        increaseIndent();
     }
 
     @Override
     public void exitCaso(lppParser.CasoContext ctx) {
         System.out.print("}\n\n");
+        decreaseIndent();
+        printCurrentIndent();
         translatedGo.append("}\n\n");
     }
 
     @Override
     public void enterCaso_sino(lppParser.Caso_sinoContext ctx) {
+        translatedGo.append("\n");
         System.out.print("\ndefault:\n");
-        translatedGo.append("\ndefault:\n");
+        printCurrentIndent();
+        translatedGo.append("default:\n");
+        increaseIndent();
     }
 
     @Override
     public void exitCaso_sino(lppParser.Caso_sinoContext ctx) {
-
+        translatedGo.append("\n");
+        decreaseIndent();
     }
 
     @Override
     public void enterOpcion(lppParser.OpcionContext ctx) {
+        translatedGo.append("\n");
         System.out.print("\ncase ");
-        translatedGo.append("\ncase ");
+        printCurrentIndent();
+        translatedGo.append("case ");
+        increaseIndent();
+    }
+
+    @Override
+    public void exitOpcion(lppParser.OpcionContext ctx) {
+        decreaseIndent();
     }
 
     @Override
@@ -405,7 +463,9 @@ public class LppToGoListener extends lppBaseListener{
     public void enterSi(lppParser.SiContext ctx) {
         String enterSiTranslated = "if " + convertOperators(ctx.exp().getText()) + " {\n";
         System.out.print(enterSiTranslated);
+        printCurrentIndent();
         translatedGo.append(enterSiTranslated);
+        increaseIndent();
     }
 
     @Override
@@ -418,6 +478,8 @@ public class LppToGoListener extends lppBaseListener{
     @Override
     public void exitSi_aux(lppParser.Si_auxContext ctx) {
         System.out.print("}");
+        decreaseIndent();
+        printCurrentIndent();
         translatedGo.append("}");
     }
 
@@ -426,9 +488,12 @@ public class LppToGoListener extends lppBaseListener{
         String enterSinoTranslated = " else ";
         System.out.print(enterSinoTranslated);
 
+        printCurrentIndent();
+
         if(ctx.si() == null) {
             System.out.print(" {\n");
             enterSinoTranslated += " {\n";
+            increaseIndent();
         }
 
         translatedGo.append(enterSinoTranslated);
@@ -438,20 +503,27 @@ public class LppToGoListener extends lppBaseListener{
     public void exitSino(lppParser.SinoContext ctx) {
         if(ctx.si() == null) {
             System.out.print("}");
+            decreaseIndent();
+            printCurrentIndent();
             translatedGo.append("}");
         }
     }
 
     @Override
     public void enterMientras(lppParser.MientrasContext ctx) {
-        String enterMientrasTranslated = "\nfor " + convertOperators(ctx.exp().getText()) + " {\n";
-        System.out.print(enterMientrasTranslated);
+        translatedGo.append("\n");
+        String enterMientrasTranslated = "for " + convertOperators(ctx.exp().getText()) + " {\n";
+        System.out.print("\n" + enterMientrasTranslated);
+        printCurrentIndent();
         translatedGo.append(enterMientrasTranslated);
+        increaseIndent();
     }
 
     @Override
     public void exitMientras(lppParser.MientrasContext ctx) {
         System.out.print("}\n\n");
+        decreaseIndent();
+        printCurrentIndent();
         translatedGo.append("}\n\n");
     }
 
@@ -467,6 +539,7 @@ public class LppToGoListener extends lppBaseListener{
             System.out.print(enterLlamarTranslated);
         }
 
+        printCurrentIndent();
         translatedGo.append(enterLlamarTranslated);
     }
 
@@ -474,12 +547,16 @@ public class LppToGoListener extends lppBaseListener{
     public void enterRepita(lppParser.RepitaContext ctx) {
         String enterRepitaTranslated = "for ok := true; ok; ok = " + convertOperators(ctx.exp().getText()) + " {\n";
         System.out.print(enterRepitaTranslated);
+        printCurrentIndent();
         translatedGo.append(enterRepitaTranslated);
+        increaseIndent();
     }
 
     @Override
     public void exitRepita(lppParser.RepitaContext ctx) {
         System.out.print("}\n\n");
+        decreaseIndent();
+        printCurrentIndent();
         translatedGo.append("}\n\n");
     }
 
@@ -487,12 +564,16 @@ public class LppToGoListener extends lppBaseListener{
     public void enterPara(lppParser.ParaContext ctx) {
         String enterParaTranslated = "for " + ctx.exp().get(0).getText() + " := " + ctx.exp().get(1).getText() + "; " + ctx.exp().get(0).getText() + " <= " + ctx.exp().get(2).getText() + "; " + ctx.exp().get(0).getText() + "++ {\n";
         System.out.print(enterParaTranslated);
+        printCurrentIndent();
+        increaseIndent();
         translatedGo.append(enterParaTranslated);
     }
 
     @Override
     public void exitPara(lppParser.ParaContext ctx) {
         System.out.print("}\n");
+        decreaseIndent();
+        printCurrentIndent();
         translatedGo.append("}\n");
     }
 }

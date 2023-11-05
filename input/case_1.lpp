@@ -43,7 +43,7 @@ striNg <- "Hola mundo"
 other_integer <- mY_integer.field
 operation <- (acumulador) mod 99
 operation <- 5 mod 99
-operation <- acumulamodor mod 99
+operation <- acumulamodor mod vara
 test <- 5 div 3 mod 8
 numero <- 123
 

@@ -562,7 +562,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterPara(lppParser.ParaContext ctx) {
-        String enterParaTranslated = "for " + ctx.exp().get(0).getText() + " := " + ctx.exp().get(1).getText() + "; " + ctx.exp().get(0).getText() + " <= " + ctx.exp().get(2).getText() + "; " + ctx.exp().get(0).getText() + "++ {\n";
+        String enterParaTranslated = "for " + ctx.exp().get(0).getText().toLowerCase() + " = " + ctx.exp().get(1).getText() + "; " + ctx.exp().get(0).getText().toLowerCase() + " <= " + ctx.exp().get(2).getText() + "; " + ctx.exp().get(0).getText().toLowerCase() + "++ {\n";
         System.out.print(enterParaTranslated);
         printCurrentIndent();
         increaseIndent();

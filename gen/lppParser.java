@@ -2469,7 +2469,7 @@ public class lppParser extends Parser {
 						setState(367);
 						match(TKN_OPENING_BRA);
 						setState(368);
-						exp_list();
+						exp(0);
 						setState(369);
 						match(TKN_CLOSING_BRA);
 						}
@@ -3460,7 +3460,7 @@ public class lppParser extends Parser {
 		"\n\u0002\u0000\u0000\u0168\u0169\u0003P(\u0000\u0169\u016a\u0003F#\u0003"+
 		"\u016a\u0177\u0001\u0000\u0000\u0000\u016b\u016c\n\u0001\u0000\u0000\u016c"+
 		"\u016d\u0005\'\u0000\u0000\u016d\u0177\u0003F#\u0002\u016e\u016f\n\u0006"+
-		"\u0000\u0000\u016f\u0170\u0005\u0006\u0000\u0000\u0170\u0171\u0003^/\u0000"+
+		"\u0000\u0000\u016f\u0170\u0005\u0006\u0000\u0000\u0170\u0171\u0003F#\u0000"+
 		"\u0171\u0172\u0005\u0007\u0000\u0000\u0172\u0177\u0001\u0000\u0000\u0000"+
 		"\u0173\u0174\n\u0005\u0000\u0000\u0174\u0175\u0005\b\u0000\u0000\u0175"+
 		"\u0177\u0005<\u0000\u0000\u0176\u0157\u0001\u0000\u0000\u0000\u0176\u015b"+

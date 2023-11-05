@@ -103,7 +103,7 @@ si (5^2 = 25)y(25 mod 5 = 0)o(add.field mod acumulador = 3) entonces
 
 fin si
 
-mientras (I<=10)o(I mod 3 = 0) haga
+mientras (I<=10)o(I mod add[3] = 0) haga
      escriba "Valor de i: ",(i)
      si i<>10 entonces
         llamar nueva_linea

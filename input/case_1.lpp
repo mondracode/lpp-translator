@@ -75,7 +75,7 @@ caso variable
 
 fin caso
 
-si (5^2 = 25)y(25 mod 5 = 0)o(add.field mod acumulador = 3) entonces
+si (5^2 = 25)y(25 mod 5 = 0)o(aDd.field mod acuMulador = 3) entonces
     // Comentario corto
 
     /* Comentario
@@ -103,13 +103,16 @@ si (5^2 = 25)y(25 mod 5 = 0)o(add.field mod acumulador = 3) entonces
 
 fin si
 
-mientras i<=10 haga
+mientras (I<=10)o(I mod 3 = 0) haga
      escriba "Valor de i: ",(i)
      si i<>10 entonces
         llamar nueva_linea
      fin si
      i<-i+1
 fin mientras
+
+si string = "StRinG" entonces
+fin si
 
 repita
     escriba ("Valor del acumulador en la iteracion: "),(acumulador)

@@ -104,7 +104,7 @@ public class LppToGoListener extends lppBaseListener{
                 .replaceAll("(?<![a-zA-Z])y(?![a-zA-Z])", " y ")
                 .replaceAll("(?<![a-zA-Z])o(?![a-zA-Z])", " o ");
 
-        rawExp = rawExp.replaceAll("\"[^\"]*\"", "\"\"");
+        rawExp = rawExp.replaceAll("\"[^\"]*\"", "\"\"").toLowerCase();
 
         List<Map.Entry<String, String>> toSort = new ArrayList<>(operatorCorrespondence.entrySet());
         toSort.sort(Map.Entry.<String, String>comparingByKey().reversed());
@@ -350,7 +350,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterDec_funcion(lppParser.Dec_funcionContext ctx) {
-        String enterDec_funcionTranslated = "\n\nfunc " + ctx.ID().getText();
+        String enterDec_funcionTranslated = "\n\nfunc " + ctx.ID().getText().toLowerCase();
         System.out.print("func " + ctx.ID().getText());
         printCurrentIndent();
         translatedGo.append(enterDec_funcionTranslated);
@@ -392,7 +392,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterDec_procedimiento(lppParser.Dec_procedimientoContext ctx) {
-        String enterDec_procedimientoTranslated = "\n\nfunc " + ctx.ID().getText();
+        String enterDec_procedimientoTranslated = "\n\nfunc " + ctx.ID().getText().toLowerCase();
         System.out.print(enterDec_procedimientoTranslated);
         printCurrentIndent();
         translatedGo.append(enterDec_procedimientoTranslated);

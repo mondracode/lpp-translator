@@ -16,7 +16,7 @@ dec_sig_variable: TKN_COMMA ID;
 
 dec_funciones: (dec_funcion | dec_procedimiento)+;
 
-dec_funcion: FUNCION ID parametros TKN_COLON tipo dec_variables prog;
+dec_funcion: FUNCION ID parametros TKN_COLON tipo dec_variables? prog;
 
 parametros: (TKN_OPENING_PAR dec_var parametro_sig* TKN_CLOSING_PAR)?;
 
@@ -24,7 +24,7 @@ parametro_sig: TKN_COMMA dec_var;
 
 dec_var: (VAR)? tipo ID;
 
-dec_procedimiento: PROCEDIMIENTO ID parametros_proc dec_variables prog_proc;
+dec_procedimiento: PROCEDIMIENTO ID parametros_proc dec_variables? prog_proc;
 
 parametros_proc: (TKN_OPENING_PAR dec_var parametro_sig_proc* TKN_CLOSING_PAR)?;
 
@@ -70,7 +70,7 @@ asigne: exp TKN_ASSIGN exp;
 
 retorne: RETORNE exp;
 
-exp: exp op_o exp | exp op_y exp | exp op_div exp | exp op_mod exp | literal | ID | exp TKN_OPENING_BRA exp_list TKN_CLOSING_BRA | exp TKN_PERIOD ID | ID (TKN_OPENING_PAR exp_list TKN_CLOSING_PAR)? | TKN_OPENING_PAR exp TKN_CLOSING_PAR | exp operator exp | exp TKN_MINUS exp;
+exp: exp op_o exp | exp op_y exp | exp op_div exp | exp op_mod exp | literal | ID | exp TKN_OPENING_BRA exp TKN_CLOSING_BRA | exp TKN_PERIOD ID | ID (TKN_OPENING_PAR exp_list TKN_CLOSING_PAR)? | TKN_OPENING_PAR exp TKN_CLOSING_PAR | exp operator exp | exp TKN_MINUS exp;
 
 op_o: TKN_OR;
 
@@ -150,10 +150,10 @@ TKN_LESS: '<';
 TKN_LEQ: '<=';
 TKN_GREATER: '>';
 TKN_GEQ: '>=';
-TKN_DIV_INT: D I V;
-TKN_MOD: M O D;
-TKN_AND: Y;
-TKN_OR: O;
+TKN_DIV_INT: ' ' D I V ' ' | {_input.LA(-1) == ')' || _input.LA(-1) == ']'}?D I V | ' ' D I V;
+TKN_MOD: ' ' M O D ' ' | {_input.LA(-1) == ')' || _input.LA(-1) == ']'}?M O D | ' ' M O D;
+TKN_AND: ' ' Y ' ' | {_input.LA(-1) == ')' || _input.LA(-1) == ']'}?Y;
+TKN_OR: ' ' O ' ' | {_input.LA(-1) == ')' || _input.LA(-1) == ']'}?O;
 
 
 // literals

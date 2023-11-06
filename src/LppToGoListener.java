@@ -1,4 +1,7 @@
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static java.util.Map.entry;
 
 public class LppToGoListener extends lppBaseListener{
@@ -36,12 +39,16 @@ public class LppToGoListener extends lppBaseListener{
         entry("=", "=="),
         entry("<", "<"),
         entry("<==", "<="),
+        entry("<=", "<="),
         entry(">", ">"),
         entry(">==", ">="),
+        entry(">=", ">="),
         entry(" div ", " / "),
         entry(" mod ", " % "),
         entry(" y ", " && "),
-        entry(" o ", " || ")
+        entry(" o ", " || "),
+        entry("verdadero", "true"),
+        entry("falso", "false")
     );
 
     private String capitalize(String str) {
@@ -79,18 +86,36 @@ public class LppToGoListener extends lppBaseListener{
         return result.toString();
     }
 
-    private String convertOperators(String rawExp) {
+    public String convertOperators(String rawExp) {
+        Map<Integer, String> literals = new HashMap<>();
+        int index = 0;
+        Pattern pattern = Pattern.compile("\"[^\"]*\"");
+        Matcher matcher = pattern.matcher(rawExp);
+
+        while (matcher.find()) {
+            String literal = matcher.group();
+            literals.put(index, literal);
+            index++;
+        }
+
         rawExp = rawExp
                 .replaceAll("(?<![a-zA-Z])div(?![a-zA-Z])", " div ")
                 .replaceAll("(?<![a-zA-Z])mod(?![a-zA-Z])", " mod ")
                 .replaceAll("(?<![a-zA-Z])y(?![a-zA-Z])", " y ")
                 .replaceAll("(?<![a-zA-Z])o(?![a-zA-Z])", " o ");
 
+        rawExp = rawExp.replaceAll("\"[^\"]*\"", "\"\"").toLowerCase();
+
         List<Map.Entry<String, String>> toSort = new ArrayList<>(operatorCorrespondence.entrySet());
         toSort.sort(Map.Entry.<String, String>comparingByKey().reversed());
         for (Map.Entry<String, String> entry : toSort) {
             rawExp = rawExp.replace(entry.getKey(), entry.getValue());
         }
+
+        for (Map.Entry<Integer, String> entry : literals.entrySet()) {
+            rawExp = rawExp.replaceFirst("\"\"", entry.getValue());
+        }
+
         return rawExp;
     }
 
@@ -211,10 +236,12 @@ public class LppToGoListener extends lppBaseListener{
 
         enterAsigneTranslated += ctx.exp().get(0).getText().toLowerCase() + " = ";
 
-        if(expText.contains(".") || ctx.exp().get(1).ID() == null){
+        if(expText.contains(".") || ctx.exp().get(1).ID() == null && !(ctx.exp().get(1).literal() != null && ctx.exp().get(1).literal().CADENA_LITERAL() != null)){
             rightHand = convertOperators(ctx.exp().get(1).getText().toLowerCase());
-        } else {
+        } else if (ctx.exp().get(1).ID() != null){
             rightHand = convertOperators(ctx.exp().get(1).ID().getText());
+        } else {
+            rightHand = convertOperators(ctx.exp().get(1).literal().getText());
         }
 
         enterAsigneTranslated += rightHand;
@@ -261,8 +288,13 @@ public class LppToGoListener extends lppBaseListener{
         }
 
         if(!(lastElement.literal() != null && lastElement.literal().CADENA_LITERAL() != null)) {
-            System.out.print(convertOperators(lastElement.getText()));
-            enterExp_listTranslated.append(convertOperators(lastElement.getText()));
+            if(lastElement.ID() != null) {
+                System.out.print(lastElement.getText().toLowerCase());
+                enterExp_listTranslated.append(lastElement.getText().toLowerCase());
+            } else {
+                System.out.print(convertOperators(lastElement.getText()));
+                enterExp_listTranslated.append(convertOperators(lastElement.getText()));
+            }
         } else {
             System.out.print(lastElement.getText());
             enterExp_listTranslated.append(lastElement.getText());
@@ -318,7 +350,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterDec_funcion(lppParser.Dec_funcionContext ctx) {
-        String enterDec_funcionTranslated = "\n\nfunc " + ctx.ID().getText();
+        String enterDec_funcionTranslated = "\n\nfunc " + ctx.ID().getText().toLowerCase();
         System.out.print("func " + ctx.ID().getText());
         printCurrentIndent();
         translatedGo.append(enterDec_funcionTranslated);
@@ -360,7 +392,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterDec_procedimiento(lppParser.Dec_procedimientoContext ctx) {
-        String enterDec_procedimientoTranslated = "\n\nfunc " + ctx.ID().getText();
+        String enterDec_procedimientoTranslated = "\n\nfunc " + ctx.ID().getText().toLowerCase();
         System.out.print(enterDec_procedimientoTranslated);
         printCurrentIndent();
         translatedGo.append(enterDec_procedimientoTranslated);
@@ -562,7 +594,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterPara(lppParser.ParaContext ctx) {
-        String enterParaTranslated = "for " + ctx.exp().get(0).getText() + " := " + ctx.exp().get(1).getText() + "; " + ctx.exp().get(0).getText() + " <= " + ctx.exp().get(2).getText() + "; " + ctx.exp().get(0).getText() + "++ {\n";
+        String enterParaTranslated = "for " + ctx.exp().get(0).getText().toLowerCase() + " = " + ctx.exp().get(1).getText() + "; " + ctx.exp().get(0).getText().toLowerCase() + " <= " + ctx.exp().get(2).getText() + "; " + ctx.exp().get(0).getText().toLowerCase() + "++ {\n";
         System.out.print(enterParaTranslated);
         printCurrentIndent();
         increaseIndent();

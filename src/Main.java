@@ -16,14 +16,13 @@ public class Main {
             // Crear el analizador sintáctico que se alimenta a partir del buffer de tokens
             lppParser parser = new lppParser(tokens);
             ParseTree tree = parser.s(); // comienza el análisis en la regla inicial
-            System.out.println(tree.toStringTree(parser)); // imprime el árbol en forma textual
+            // System.out.println(tree.toStringTree(parser)); // imprime el árbol en forma textual
 
             LppToGoListener listener = new LppToGoListener();
 
             ParseTreeWalker walker = new ParseTreeWalker();
             walker.walk(listener, tree);
             System.out.println();
-            System.out.println("-----------------------------------");
 
             listener.translatedGo.insert(0, listener.codeHeader + "\n");
             System.out.println(listener.translatedGo);

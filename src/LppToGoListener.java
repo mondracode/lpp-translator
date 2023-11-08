@@ -59,11 +59,15 @@ public class LppToGoListener extends lppBaseListener{
         StringBuilder result = new StringBuilder();
         String variableTipo = ctx.getText().toLowerCase();
 
+        if(variableTipo.contains("arreglo")) {
+            variableTipo = variableTipo.substring(variableTipo.lastIndexOf("de") + 2).trim();
+        }
+
         if(variableTipo.contains("cadena")) {
             result.append("string");
         }
 
-        if(!variableTipo.toLowerCase().contains("arreglo") && !variableTipo.toLowerCase().contains("cadena")) {
+        if(!variableTipo.toLowerCase().contains("cadena")) {
             switch (variableTipo) {
                 case "entero":
                     result.append("int");
@@ -154,6 +158,7 @@ public class LppToGoListener extends lppBaseListener{
     @Override
     public void exitDec_variable(lppParser.Dec_variableContext ctx) {
         String exitDec_variableTranslated = getVarType(ctx.tipo_variable()) + "\n";
+
         translatedGo.append(exitDec_variableTranslated);
     }
 
@@ -194,7 +199,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterArreglo_variable(lppParser.Arreglo_variableContext ctx) {
-        String enterArreglo_variableTranslated = "[" + ctx.ENTERO_LITERAL().getText() + "]";
+        String enterArreglo_variableTranslated = "[" + ctx.exp_arreglo().getText() + "]";
         translatedGo.append(enterArreglo_variableTranslated);
     }
 
@@ -509,7 +514,7 @@ public class LppToGoListener extends lppBaseListener{
     @Override
     public void enterLlamar(lppParser.LlamarContext ctx) {
         String enterLlamarTranslated;
-        if(ctx.ID().getText().equals("nueva_linea")) {
+        if(ctx.ID().getText().equalsIgnoreCase("nueva_linea")) {
             if (codeHeader.indexOf("import \"fmt\"\n") == -1) codeHeader.append("import \"fmt\"\n");
             enterLlamarTranslated = "fmt.Println()\n";
         } else {

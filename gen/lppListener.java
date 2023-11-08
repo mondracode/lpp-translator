@@ -486,4 +486,14 @@ public interface lppListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExp_list(lppParser.Exp_listContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link lppParser#exp_arreglo}.
+	 * @param ctx the parse tree
+	 */
+	void enterExp_arreglo(lppParser.Exp_arregloContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#exp_arreglo}.
+	 * @param ctx the parse tree
+	 */
+	void exitExp_arreglo(lppParser.Exp_arregloContext ctx);
 }

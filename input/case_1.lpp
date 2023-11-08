@@ -1,139 +1,52 @@
-registro estudiante
-	cadena [10] nombre, segundo_nombre
-	cadena [10] apellido
-	entero edad
-	caracter tipo_sangre
-	enteRo matricula
-	real promedio
-	arreglo[2] de arreglo[3] de cadena[10] arreglo_cadenas
-fin registro
-
-
-// Es posible declarar más de una variable en la misma línea
-entero my_integer, variableIwillNOTUse
-real the_real_ONE
-Booleano boolean
-Caracter char
-cadena[10] string
-Estudiante student
-entero n1, n2, numero, resultado, i, acumulador
-
-entero resultado
-funcion exponenciacion(entero base,entero exponente): entero
-	inicio
-		retorne base^exponente
-	fin
-
-procedimiento suma(entero n1,entero n2)
-	entero resultado
-	inicio
-		resultado<-n1+n2
-		escriba ("El resultado de la suma es: "),(resultado)
-	fin
-
-Inicio
-
-// Las asignaciones no se realizan con =
-
-my_integer <- 2 //para declarar números positivos no se antepone el signo +
-the_REAL_ONE <- -4.5682 // para los negativos si se escribe el signo
-BOOLEAN <- Verdadero
-char <-'a'
-striNg <- "Hola mundo"
-other_integer <- mY_integer.field
-operation <- (acumulador) mod 99
-operation <- 5 mod 99
-operation <- acumulamodor mod vara
-test <- 5 div 3 mod 8
-numero <- 123
-
-condicion <- 23 <> numero
-
-student.nomBre <- "Reinaldo Felipe"
-nombrecito <- student.Nombre
-
-// imprimimos los valores en consola y separados por un espacio
-escriba my_integer," ",7.7, -5, the_real_one," ",Boolean," ",char," ",string,FalSo
-escriba 88 <> 33
-
-Escriba I
-
-resultado <- exponenciacion(2,5)
-resultado <- exponenciacion(2,5, 3, 2)
-escriba "El resultado de la operacion es: ",resultado
-escriba "22222 <> 6666"
-
-caso variable
-  1,2,3:
-  	escriba("Es un número entero entre 1 y 3")
-  4:
-  	escriba("Lo verdadero es que es el número 4")
-  5:
-  	escriba("Es el número 5")
-  sino:
-  	escriba("No sé qué número es, ni modo :/")
-
-fin caso
-
-si (5^2 = 25)y(25 mod 5 = 0)o(aDd.field mod acuMulador = 3) entonces
-    // Comentario corto
-
-    /* Comentario
-     de
-     varias
-     líneas
-     */
-
-    escriba "el 25 es poderoso"
-
-fin si
-
-si nuMero=100 entonces
-    escriba "El número es 100"
-sino si numero>100 entonces
-    escriba "El número es mayor que 100"
-    sino
-        escriba "El número es menor que 100"
-    fin si
-fin si
-
-si (5^2 = 25)y(25 mod 5 = 0)o(add.field mod acumulador = 3) entonces
-
-    escriba "el 25 es poderoso"
-
-fin si
-
-mientras (I<=10)o(I mod add[3] = 0) haga
-     escriba "Valor de i: ",(i)
-     si i<>10 entonces
-        llamar nueva_linea
-     fin si
-     i<-i+1
-fin mientras
-
-si string = "StRinG" entonces
-fin si
-
-repita
-    escriba ("Valor del acumulador en la iteracion: "),(acumulador)
-    llamar nueva_linea
-    i<-i+1
-    acumulador<-acumulador+(i*2)
-hasta (i=20) o (acumulador mod 5=4)
-
 /*
-	Bloque de comentarios
-	puedo poner lo que yo quiera y no va a afectar
-	la compilación de mi programa ;)
+
+Matrices y arreglos
+
 */
 
-Para I<- 1 hasta 4 haga
-    Para K<- 1 hasta 5 haga
-        Escriba I
-    Fin para
-    Llamar nueva_linea
-Fin para
+Arreglo[5] de aRReglO[10] de arREGlo[5,5] dE arreglo[3,3,3] de entero o_o
+arreGlo[2,2,2] de booleano Booleans
+entero walker1, walker2, walker3
+booleano result
 
-    lea n1,n2
+inicio
+  O_o[0][2][1,3][1,2,0] <- 19
 
-FIN
+  escriba "The secret number is: ", o_O[0][2][1,3][1,2,0]
+
+  llamar nueva_Linea
+
+  escriba "What about the other array?", ("Let´s make it possible "),':','v'
+
+  llamar nueva_linea
+
+  Booleans[0,0,0] <- falso
+  Booleans[0,0,1] <- falso
+  Booleans[0,1,0] <- verdadero
+  Booleans[0,1,1] <- verdadero
+  Booleans[1,0,0] <- falso
+  Booleans[1,0,1] <- falso
+  Booleans[1,1,0] <- verdadero
+  Booleans[1,1,1] <- falso
+
+  walker1 <- 0
+
+  mientras walker1<2 haga
+     walker2<-0
+     mientras walker2<2 haga
+        walker3<-0
+        mientras walker3<2 haga
+           escriba "booleans[",walker1,",",walker2,",",walker3,"] has value: ",(booleans[walker1,walker2,walker3])
+           llamar nueva_linea
+           walker3<-walker3+1
+        fin mientras
+       walker2<-walker2+1
+     fin mientras
+     walker1<-walker1+1
+  fin mientras
+
+  llamar nueva_linea
+
+  escriba "End of the program :3 ",(45*98/-(23 div 2)^3)
+
+fin

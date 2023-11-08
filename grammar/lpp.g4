@@ -70,7 +70,7 @@ asigne: exp TKN_ASSIGN exp;
 
 retorne: RETORNE exp;
 
-exp: exp op_o exp | exp op_y exp | exp op_div exp | exp op_mod exp | literal | ID | exp TKN_OPENING_BRA exp TKN_CLOSING_BRA | exp TKN_PERIOD ID | ID (TKN_OPENING_PAR exp_list TKN_CLOSING_PAR)? | TKN_OPENING_PAR exp TKN_CLOSING_PAR | exp operator exp | exp TKN_MINUS exp;
+exp: exp op_o exp | exp op_y exp | exp op_div exp | exp op_mod exp | literal | ID | exp TKN_OPENING_BRA exp_arreglo TKN_CLOSING_BRA | exp TKN_PERIOD ID | ID (TKN_OPENING_PAR exp_list TKN_CLOSING_PAR)? | TKN_OPENING_PAR exp TKN_CLOSING_PAR | exp operator exp | exp TKN_MINUS exp | TKN_MINUS exp;
 
 op_o: TKN_OR;
 
@@ -90,11 +90,13 @@ tipo_variable: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo_variable |
 
 cadena: CADENA TKN_OPENING_BRA ENTERO_LITERAL TKN_CLOSING_BRA;
 
-arreglo: ARREGLO TKN_OPENING_BRA ENTERO_LITERAL TKN_CLOSING_BRA DE tipo;
+arreglo: ARREGLO TKN_OPENING_BRA exp_arreglo TKN_CLOSING_BRA DE tipo;
 
-arreglo_variable: ARREGLO TKN_OPENING_BRA ENTERO_LITERAL TKN_CLOSING_BRA DE tipo_variable;
+arreglo_variable: ARREGLO TKN_OPENING_BRA exp_arreglo TKN_CLOSING_BRA DE tipo_variable;
 
 exp_list: exp (TKN_COMMA exp)*;
+
+exp_arreglo: exp (TKN_COMMA exp)*;
 
 // Tokens
 TKN_COMMA: ',';

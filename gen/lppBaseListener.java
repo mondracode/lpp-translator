@@ -587,6 +587,18 @@ public class lppBaseListener implements lppListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExp_list(lppParser.Exp_listContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExp_arreglo(lppParser.Exp_arregloContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExp_arreglo(lppParser.Exp_arregloContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

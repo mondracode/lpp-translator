@@ -8,11 +8,15 @@ Arreglo[5] de aRReglO[10] de arREGlo[5,5] dE arreglo[3,3,3] de entero o_o
 arreGlo[2,2,2] de booleano Booleans
 entero walker1, walker2, walker3
 booleano result
+entero div_ino
 
 inicio
   O_o[0][2][1,3][1,2,0] <- 19
 
-  escriba "The secret number is: ", o_O[0][2][1,3][1,2,0]
+  escriba "The secret number is: ", div_ino[0][2][1,3][1,2,0]
+  escriba "The secret number is: ", mod_ino[0][2][1,3][1,2,0]
+  escriba "The secret number is: ", o_ino[0][2][1,3][1,2,0]
+  escriba "The secret number is: ", y_ino[0][2][1,3][1,2,0]
 
   llamar nueva_Linea
 
@@ -47,6 +51,6 @@ inicio
 
   llamar nueva_linea
 
-  escriba "End of the program :3 ",(45*98/-(23 div 2)^3)
+  escriba "End of the program :3 ",(45*98/-(23 div (2)^3))
 
 fin

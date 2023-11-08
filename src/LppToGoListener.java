@@ -103,10 +103,10 @@ public class LppToGoListener extends lppBaseListener{
         }
 
         rawExp = rawExp
-                .replaceAll("(?<![a-zA-Z])div(?![a-zA-Z])", " div ")
-                .replaceAll("(?<![a-zA-Z])mod(?![a-zA-Z])", " mod ")
-                .replaceAll("(?<![a-zA-Z])y(?![a-zA-Z])", " y ")
-                .replaceAll("(?<![a-zA-Z])o(?![a-zA-Z])", " o ");
+                .replaceAll("(?<![a-zA-Z]_)div(?![a-zA-Z_])", " div ")
+                .replaceAll("(?<![a-zA-Z]_)mod(?![a-zA-Z_])", " mod ")
+                .replaceAll("(?<![a-zA-Z_])y(?![a-zA-Z_])", " y ")
+                .replaceAll("(?<![a-zA-Z_])o(?![a-zA-Z_])", " o ");
 
         rawExp = rawExp.replaceAll("\"[^\"]*\"", "\"\"").toLowerCase();
 
@@ -199,7 +199,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void enterArreglo_variable(lppParser.Arreglo_variableContext ctx) {
-        String enterArreglo_variableTranslated = "[" + ctx.exp_arreglo().getText() + "]";
+        String enterArreglo_variableTranslated = "[" + ctx.exp_arreglo().getText().replace(",", "][") + "]";
         translatedGo.append(enterArreglo_variableTranslated);
     }
 
@@ -223,8 +223,11 @@ public class LppToGoListener extends lppBaseListener{
         String enterAsigneTranslated = "";
         String rightHand;
         String expText = ctx.exp().get(1).getText();
+        String leftText = ctx.exp().get(0).getText();
 
-        enterAsigneTranslated += ctx.exp().get(0).getText().toLowerCase() + " = ";
+        leftText = replaceBrackets(leftText);
+
+        enterAsigneTranslated += leftText.toLowerCase() + " = ";
 
         if(expText.contains(".") || ctx.exp().get(1).ID() == null && !(ctx.exp().get(1).literal() != null && ctx.exp().get(1).literal().CADENA_LITERAL() != null)){
             rightHand = convertOperators(ctx.exp().get(1).getText().toLowerCase());
@@ -242,6 +245,38 @@ public class LppToGoListener extends lppBaseListener{
 
         printCurrentIndent();
         translatedGo.append(enterAsigneTranslated);
+    }
+
+    private String replaceBrackets(String exp) {
+        StringBuilder result = new StringBuilder();
+        int index = 0;
+        Stack<String> stack = new Stack<>();
+
+        while (index < exp.length()) {
+            char c = exp.charAt(index);
+
+            if (c == '[') {
+                stack.push("[");
+                result.append("[");
+            } else if (c == ']') {
+                if (!stack.isEmpty()) {
+                    stack.pop();
+                    result.append("]");
+                }
+            } else if (c == ',') {
+                if (!stack.isEmpty()) {
+                    result.append("][");
+                } else {
+                    result.append(",");
+                }
+            } else {
+                result.append(c);
+            }
+
+            index++;
+        }
+
+        return result.toString();
     }
 
     @Override
@@ -265,6 +300,8 @@ public class LppToGoListener extends lppBaseListener{
                 exp = exp.toLowerCase();
             }
 
+            exp = replaceBrackets(exp);
+
             if(!(currentElement.literal() != null && currentElement.literal().CADENA_LITERAL() != null)) {
                 exp = convertOperators(exp);
             }
@@ -272,14 +309,18 @@ public class LppToGoListener extends lppBaseListener{
             enterExp_listTranslated.append(exp).append(", ");
         }
 
+        String lastExp = lastElement.getText();
+
+        lastExp = replaceBrackets(lastExp);
+
         if(!(lastElement.literal() != null && lastElement.literal().CADENA_LITERAL() != null)) {
             if(lastElement.ID() != null) {
-                enterExp_listTranslated.append(lastElement.getText().toLowerCase());
+                enterExp_listTranslated.append(lastExp.toLowerCase());
             } else {
-                enterExp_listTranslated.append(convertOperators(lastElement.getText()));
+                enterExp_listTranslated.append(convertOperators(lastExp));
             }
         } else {
-            enterExp_listTranslated.append(lastElement.getText());
+            enterExp_listTranslated.append(lastExp);
         }
 
         translatedGo.append(enterExp_listTranslated);

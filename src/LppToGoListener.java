@@ -2,8 +2,6 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static java.util.Map.entry;
-
 public class LppToGoListener extends lppBaseListener{
     private int currentIndentLevel = 0;
     public StringBuilder codeHeader = new StringBuilder().append("package main\n\n");

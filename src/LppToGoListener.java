@@ -60,7 +60,7 @@ public class LppToGoListener extends lppBaseListener{
         String variableTipo = exp.toLowerCase();
 
         if(variableTipo.contains("arreglo")) {
-            variableTipo = variableTipo.substring(variableTipo.lastIndexOf("]de") + 2);
+            variableTipo = variableTipo.substring(variableTipo.lastIndexOf("]de") + 3).trim();
         }
 
         if(variableTipo.contains("cadena")) {

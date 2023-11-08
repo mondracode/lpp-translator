@@ -437,6 +437,26 @@ public interface lppListener extends ParseTreeListener {
 	 */
 	void exitTipo(lppParser.TipoContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link lppParser#tipo_var}.
+	 * @param ctx the parse tree
+	 */
+	void enterTipo_var(lppParser.Tipo_varContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#tipo_var}.
+	 * @param ctx the parse tree
+	 */
+	void exitTipo_var(lppParser.Tipo_varContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link lppParser#tipo_funcion}.
+	 * @param ctx the parse tree
+	 */
+	void enterTipo_funcion(lppParser.Tipo_funcionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link lppParser#tipo_funcion}.
+	 * @param ctx the parse tree
+	 */
+	void exitTipo_funcion(lppParser.Tipo_funcionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link lppParser#tipo_variable}.
 	 * @param ctx the parse tree
 	 */

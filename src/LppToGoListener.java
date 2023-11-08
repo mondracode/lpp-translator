@@ -55,9 +55,9 @@ public class LppToGoListener extends lppBaseListener{
         return str.substring(0, 1).toUpperCase() + str.substring(1);
     };
 
-    private String getVarType(lppParser.Tipo_variableContext ctx) {
+    private String getVarType(String exp) {
         StringBuilder result = new StringBuilder();
-        String variableTipo = ctx.getText().toLowerCase();
+        String variableTipo = exp.toLowerCase();
 
         if(variableTipo.contains("arreglo")) {
             variableTipo = variableTipo.substring(variableTipo.lastIndexOf("de") + 2).trim();
@@ -157,7 +157,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void exitDec_variable(lppParser.Dec_variableContext ctx) {
-        String exitDec_variableTranslated = getVarType(ctx.tipo_variable()) + "\n";
+        String exitDec_variableTranslated = getVarType(ctx.tipo_variable().getText()) + "\n";
 
         translatedGo.append(exitDec_variableTranslated);
     }
@@ -170,7 +170,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void exitDec_variable_int(lppParser.Dec_variable_intContext ctx) {
-        String exitDec_variable_intTranslated = getVarType(ctx.tipo_variable()) + '\n';
+        String exitDec_variable_intTranslated = "asdas" + '\n';
         translatedGo.append(exitDec_variable_intTranslated);
     }
 
@@ -391,10 +391,14 @@ public class LppToGoListener extends lppBaseListener{
     }
 
     @Override
+    public void enterTipo_funcion(lppParser.Tipo_funcionContext ctx) {
+        translatedGo.append(getVarType(ctx.getText()) + "  {\n");
+        increaseIndent();
+    }
+
+    @Override
     public void enterProg(lppParser.ProgContext ctx) {
         printCurrentIndent();
-        translatedGo.append(" {\n");
-        increaseIndent();
     }
 
     @Override
@@ -439,9 +443,16 @@ public class LppToGoListener extends lppBaseListener{
             globalVariables.add(ctx.ID().getText());
         }
 
-        String enterDec_varTranslated = ctx.ID().getText() + " ";
+        String enterDec_varTranslated = ctx.ID().getText();
         printCurrentIndent();
         translatedGo.append(enterDec_varTranslated);
+    }
+
+    @Override
+    public void exitDec_var(lppParser.Dec_varContext ctx) {
+        if(ctx.VAR() == null) {
+            translatedGo.append(" " + getVarType(ctx.tipo_var().getText()));
+        }
     }
 
     @Override

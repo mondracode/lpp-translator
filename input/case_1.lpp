@@ -1,56 +1,61 @@
-/*
+enteRo _ , __ , ___
+real my_real, _real2, __result_REAL__
 
-Matrices y arreglos
 
-*/
+fuNCIOn add(ENTERO n1, entero n2, real n3): enTERO
 
-Arreglo[5] de aRReglO[10] de arREGlo[5,5] dE arreglo[3,3,3] de entero o_o
-arreGlo[2,2,2] de booleano Booleans
-entero walker1, walker2, walker3
-booleano result
-entero div_ino
+enterO result
+
+INICIO
+  result <- n1+n2
+  rETORNE result
+Fin
+
+
+fuNCIOn mult(Real r1, REAL r2, entero r3): REAL
+
+REAL the__real_one
+
+INICIO
+  The__real_one <- R1+r2
+  rETORNE the__Real_one
+Fin
+
+
+ProcedimientO greeting(entero a, entero b)
+cadena [20] sayHello
+inicio
+
+    sayHello <- "Hi folks :) "
+
+    escriba sayHello
+
+fin
+
+funcion introduceMyself: cadena[10]
+inicio
+   retorne "I'm a student"
+fin
+
 
 inicio
-  O_o[0][2][1,3][1,2,0] <- 19
 
-  escriba "The secret number is: ", div_ino[0][2][1,3][1,2,0]
-  escriba "The secret number is: ", mod_ino[0][2][1,3][1,2,0]
-  escriba "The secret number is: ", o_ino[0][2][1,3][1,2,0]
-  escriba "The secret number is: ", y_ino[0][2][1,3][1,2,0]
+   _ <- 20
+   _reAl2 <- -9.5
+   __ <- 7
 
-  llamar nueva_Linea
+   my_Real<- 2.7
 
-  escriba "What about the other array?", ("Let´s make it possible "),':','v'
+   ___ <- add(_, __)
 
-  llamar nueva_linea
+   __Result_Real__ <- mult(MY_real, _reAl2)
 
-  Booleans[0,0,0] <- falso
-  Booleans[0,0,1] <- falso
-  Booleans[0,1,0] <- verdadero
-  Booleans[0,1,1] <- verdadero
-  Booleans[1,0,0] <- falso
-  Booleans[1,0,1] <- falso
-  Booleans[1,1,0] <- verdadero
-  Booleans[1,1,1] <- falso
-
-  walker1 <- 0
-
-  mientras walker1<2 haga
-     walker2<-0
-     mientras walker2<2 haga
-        walker3<-0
-        mientras walker3<2 haga
-           escriba "booleans[",walker1,",",walker2,",",walker3,"] has value: ",(booleans[walker1,walker2,walker3])
-           llamar nueva_linea
-           walker3<-walker3+1
-        fin mientras
-       walker2<-walker2+1
-     fin mientras
-     walker1<-walker1+1
-  fin mientras
-
-  llamar nueva_linea
-
-  escriba "End of the program :3 ",(45*98/-(23 div (2)^3))
+   escriba ("The result of adding "),_," and ",__, " is: ",___
+   LLamar NUEVA_linea
+   Escriba ("The result of multiplyin"+"g "),MY_real," a",'n',"d ", _rEal2," is: ",__RESULT_real__
+   llamar nueva_linEa
+   Llamar Nueva_linea
+   llamAr greeting
+   ESCRIBA introduceMySelf()," that loves how to learn :3"
 
 fin

@@ -16,13 +16,13 @@ dec_sig_variable: TKN_COMMA ID;
 
 dec_funciones: (dec_funcion | dec_procedimiento)+;
 
-dec_funcion: FUNCION ID parametros TKN_COLON tipo dec_variables? prog;
+dec_funcion: FUNCION ID parametros TKN_COLON tipo_funcion dec_variables? prog;
 
 parametros: (TKN_OPENING_PAR dec_var parametro_sig* TKN_CLOSING_PAR)?;
 
 parametro_sig: TKN_COMMA dec_var;
 
-dec_var: (VAR)? tipo ID;
+dec_var: (VAR)? tipo_var ID;
 
 dec_procedimiento: PROCEDIMIENTO ID parametros_proc dec_variables? prog_proc;
 
@@ -70,7 +70,7 @@ asigne: exp TKN_ASSIGN exp;
 
 retorne: RETORNE exp;
 
-exp: exp op_o exp | exp op_y exp | exp op_div exp | exp op_mod exp | literal | ID | exp TKN_OPENING_BRA exp_arreglo TKN_CLOSING_BRA | exp TKN_PERIOD ID | ID (TKN_OPENING_PAR exp_list TKN_CLOSING_PAR)? | TKN_OPENING_PAR exp TKN_CLOSING_PAR | exp operator exp | exp TKN_MINUS exp | TKN_MINUS exp;
+exp: exp op_o exp | exp op_y exp | exp op_div exp | exp op_mod exp | literal | ID | exp TKN_OPENING_BRA exp_arreglo TKN_CLOSING_BRA | exp TKN_PERIOD ID | ID (TKN_OPENING_PAR exp_list? TKN_CLOSING_PAR)? | TKN_OPENING_PAR exp TKN_CLOSING_PAR | exp operator exp | exp TKN_MINUS exp | TKN_MINUS exp;
 
 op_o: TKN_OR;
 
@@ -85,6 +85,10 @@ operator: OPERATOR;
 literal: CHAR_LITERAL | CADENA_LITERAL | REAL_LITERAL | ENTERO_LITERAL | TKN_MINUS REAL_LITERAL | TKN_MINUS ENTERO_LITERAL | BOOLEANO_LITERAL;
 
 tipo: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo | ID;
+
+tipo_var: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo | ID;
+
+tipo_funcion: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo | ID;
 
 tipo_variable: ENTERO | REAL | BOOLEANO | CARACTER | cadena | arreglo_variable | ID;
 

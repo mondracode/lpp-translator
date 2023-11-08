@@ -29,27 +29,29 @@ public class LppToGoListener extends lppBaseListener{
 
     private HashSet<String> globalVariables = new HashSet<>();
 
-    private final Map<String, String> operatorCorrespondence = Map.ofEntries(
-        entry("<>", "!="),
-        entry("+", "+"),
-        entry("-", "-"),
-        entry("*", "*"),
-        entry("/", "/"),
-        entry("^", "^"),
-        entry("=", "=="),
-        entry("<", "<"),
-        entry("<==", "<="),
-        entry("<=", "<="),
-        entry(">", ">"),
-        entry(">==", ">="),
-        entry(">=", ">="),
-        entry(" div ", " / "),
-        entry(" mod ", " % "),
-        entry(" y ", " && "),
-        entry(" o ", " || "),
-        entry("verdadero", "true"),
-        entry("falso", "false")
-    );
+    private final Map<String, String> operatorCorrespondence = new HashMap<>();
+
+    {
+        operatorCorrespondence.put("<>", "!=");
+        operatorCorrespondence.put("+", "+");
+        operatorCorrespondence.put("-", "-");
+        operatorCorrespondence.put("*", "*");
+        operatorCorrespondence.put("/", "/");
+        operatorCorrespondence.put("^", "^");
+        operatorCorrespondence.put("=", "==");
+        operatorCorrespondence.put("<", "<");
+        operatorCorrespondence.put("<==", "<=");
+        operatorCorrespondence.put("<=", "<=");
+        operatorCorrespondence.put(">", ">");
+        operatorCorrespondence.put(">==", ">=");
+        operatorCorrespondence.put(">=", ">=");
+        operatorCorrespondence.put(" div ", " / ");
+        operatorCorrespondence.put(" mod ", " % ");
+        operatorCorrespondence.put(" y ", " && ");
+        operatorCorrespondence.put(" o ", " || ");
+        operatorCorrespondence.put("verdadero", "true");
+        operatorCorrespondence.put("falso", "false");
+    }
 
     private String capitalize(String str) {
         return str.substring(0, 1).toUpperCase() + str.substring(1);

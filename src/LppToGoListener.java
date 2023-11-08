@@ -60,7 +60,7 @@ public class LppToGoListener extends lppBaseListener{
         String variableTipo = exp.toLowerCase();
 
         if(variableTipo.contains("arreglo")) {
-            variableTipo = variableTipo.substring(variableTipo.lastIndexOf("de") + 2).trim();
+            variableTipo = variableTipo.substring(variableTipo.lastIndexOf("]de") + 2);
         }
 
         if(variableTipo.contains("cadena")) {
@@ -170,7 +170,7 @@ public class LppToGoListener extends lppBaseListener{
 
     @Override
     public void exitDec_variable_int(lppParser.Dec_variable_intContext ctx) {
-        String exitDec_variable_intTranslated = "asdas" + '\n';
+        String exitDec_variable_intTranslated = getVarType(ctx.tipo_variable().getText()) + '\n';
         translatedGo.append(exitDec_variable_intTranslated);
     }
 

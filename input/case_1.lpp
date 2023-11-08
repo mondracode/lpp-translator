@@ -1,61 +1,139 @@
-enteRo _ , __ , ___
-real my_real, _real2, __result_REAL__
+registro estudiante
+	cadena [10] nombre, segundo_nombre
+	cadena [10] apellido
+	entero edad
+	caracter tipo_sangre
+	enteRo matricula
+	real promedio
+	arreglo[2] de arreglo[55] de arreglo[3] de cadena[47] arreglo_cadenas
+fin registro
 
 
-fuNCIOn add(ENTERO n1, entero n2, real n3): enTERO
+// Es posible declarar más de una variable en la misma línea
+entero my_integer, variableIwillNOTUse
+real the_real_ONE
+Booleano boolean
+Caracter char
+cadena[10] string
+Estudiante student
+entero n1, n2, numero, resultado, i, acumulador
 
-enterO result
+entero resultado
+funcion exponenciacion(entero base,entero exponente): entero
+	inicio
+		retorne base^exponente
+	fin
 
-INICIO
-  result <- n1+n2
-  rETORNE result
-Fin
+procedimiento suma(entero n1,entero n2)
+	entero resultado
+	inicio
+		resultado<-n1+n2
+		escriba ("El resultado de la suma es: "),(resultado)
+	fin
 
+Inicio
 
-fuNCIOn mult(Real r1, REAL r2, entero r3): REAL
+// Las asignaciones no se realizan con =
 
-REAL the__real_one
+my_integer <- 2 //para declarar números positivos no se antepone el signo +
+the_REAL_ONE <- -4.5682 // para los negativos si se escribe el signo
+BOOLEAN <- Verdadero
+char <-'a'
+striNg <- "Hola mundo"
+other_integer <- mY_integer.field
+operation <- (acumulador) mod 99
+operation <- 5 mod 99
+operation <- acumulamodor mod vara
+test <- 5 div 3 mod 8
+numero <- 123
 
-INICIO
-  The__real_one <- R1+r2
-  rETORNE the__Real_one
-Fin
+condicion <- 23 <> numero
 
+student.nomBre <- "Reinaldo Felipe"
+nombrecito <- student.Nombre
 
-ProcedimientO greeting(entero a, entero b)
-cadena [20] sayHello
-inicio
+// imprimimos los valores en consola y separados por un espacio
+escriba my_integer," ",7.7, -5, the_real_one," ",Boolean," ",char," ",string,FalSo
+escriba 88 <> 33
 
-    sayHello <- "Hi folks :) "
+Escriba I
 
-    escriba sayHello
+resultado <- exponenciacion(2,5)
+resultado <- exponenciacion(2,5, 3, 2)
+escriba "El resultado de la operacion es: ",resultado
+escriba "22222 <> 6666"
 
-fin
+caso variable
+  1,2,3:
+  	escriba("Es un número entero entre 1 y 3")
+  4:
+  	escriba("Lo verdadero es que es el número 4")
+  5:
+  	escriba("Es el número 5")
+  sino:
+  	escriba("No sé qué número es, ni modo :/")
 
-funcion introduceMyself: cadena[10]
-inicio
-   retorne "I'm a student"
-fin
+fin caso
 
+si (5^2 = 25)y(25 mod 5 = 0)o(aDd.field mod acuMulador = 3) entonces
+    // Comentario corto
 
-inicio
+    /* Comentario
+     de
+     varias
+     líneas
+     */
 
-   _ <- 20
-   _reAl2 <- -9.5
-   __ <- 7
+    escriba "el 25 es poderoso"
 
-   my_Real<- 2.7
+fin si
 
-   ___ <- add(_, __)
+si nuMero=100 entonces
+    escriba "El número es 100"
+sino si numero>100 entonces
+    escriba "El número es mayor que 100"
+    sino
+        escriba "El número es menor que 100"
+    fin si
+fin si
 
-   __Result_Real__ <- mult(MY_real, _reAl2)
+si (5^2 = 25)y(25 mod 5 = 0)o(add.field mod acumulador = 3) entonces
 
-   escriba ("The result of adding "),_," and ",__, " is: ",___
-   LLamar NUEVA_linea
-   Escriba ("The result of multiplyin"+"g "),MY_real," a",'n',"d ", _rEal2," is: ",__RESULT_real__
-   llamar nueva_linEa
-   Llamar Nueva_linea
-   llamAr greeting
-   ESCRIBA introduceMySelf()," that loves how to learn :3"
+    escriba "el 25 es poderoso"
 
-fin
+fin si
+
+mientras (I<=10)o(I mod add[3] = 0) haga
+     escriba "Valor de i: ",(i)
+     si i<>10 entonces
+        llamar nueva_linea
+     fin si
+     i<-i+1
+fin mientras
+
+si string = "StRinG" entonces
+fin si
+
+repita
+    escriba ("Valor del acumulador en la iteracion: "),(acumulador)
+    llamar nueva_linea
+    i<-i+1
+    acumulador<-acumulador+(i*2)
+hasta (i=20) o (acumulador mod 5=4)
+
+/*
+	Bloque de comentarios
+	puedo poner lo que yo quiera y no va a afectar
+	la compilación de mi programa ;)
+*/
+
+Para I<- 1 hasta 4 haga
+    Para K<- 1 hasta 5 haga
+        Escriba I
+    Fin para
+    Llamar nueva_linea
+Fin para
+
+    lea n1,n2
+
+FIN
